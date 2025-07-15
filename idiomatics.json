@@ -1,5 +1,8 @@
 [
   "english":{
     "hi": "helo"
+  },
+  "german":{
+    "hallo":"HOla"
   }
 ]
