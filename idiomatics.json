@@ -1,6 +1,7 @@
 [
   "english":{
-    "hi": "Hola"
+    "hi": "Hola",
+    "Morning": "Buenos dias"
   },
   "german":{
     "hallo":"Hola"
