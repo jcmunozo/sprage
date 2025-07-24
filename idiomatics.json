@@ -2,7 +2,8 @@
   "english":{
     "hi": "Hola",
     "Morning": "Buenos dias",
-    "Afternoon": "Tardes"
+    "Afternoon": "Tardes",
+    "annoy": "molesto"
   },
   "german":{
     "hallo":"Hola"
