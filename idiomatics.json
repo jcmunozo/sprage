@@ -12,5 +12,13 @@
   "german":{
     "hallo":"Hola",
     "Wie geths": "Como estas"
+  },
+  {
+  "_id": "789",
+  "word": "Wish",
+  "part_of_speech": "verb",
+  "definitions": [
+    { "meaning": "Desire something impossible", "example": "I wish I were rich." }
+  ]
   }
 ]
