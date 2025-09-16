@@ -21,4 +21,12 @@
   "language": "English",
   "variants": [""],
   "tags": ["formality"]
+},
+{
+  "_id": "456",
+  "phrase": "face the music",
+  "meaning": "acept the concequence",
+  "language": "English",
+  "variants": [""],
+  "tags": ["formality"]
 }
