@@ -37,7 +37,7 @@
   "examples": [""],
   "difficulty": "intermediate",
   "tags": ["prepositions", "verbs"]
-}
+},
 {
   "_id": "126",
   "title": "In doing so",
@@ -45,4 +45,12 @@
   "examples": [""],
   "difficulty": "intermediate",
   "tags": ["prepositions", "verbs"]
-}
+},
+{
+  "_id": "126",
+  "title": "bury the hatche",
+  "description": "Al hacerlo",
+  "examples": [""],
+  "difficulty": "intermediate",
+  "tags": ["prepositions", "verbs"]
+},
