@@ -4,3 +4,4 @@ Rashly = precipitadamente
 in a manner that is hasty = de manera apresurada
 carry out = Llevar a cabo
 better late than never
+properly=propiamente
