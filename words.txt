@@ -29,3 +29,4 @@ When I worked in a team, we would have brainstorming sessions every friday morni
 If needed, Alex would allocate additional resources = Si fuera necesario, alex asignaria recursos ...
 In the past when facing challenges, alex would remain focused on the objectives
 yellow-bellied = coward
+Works like a charm = Works very well or as expected
