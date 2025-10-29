@@ -32,4 +32,7 @@ yellow-bellied = coward
 Works like a charm = Works very well or as expected
 if needed = Si es necesario
 Rarely will innovative ideas be welcomed so enthusiastically
-
+Not only are their insights valuable, but they are also appreciated by the entire team
+not only does the manager articulate clear goals, but she will also keep the team motivated to achieve them
+rarely do you see such innovative solutions to complex problems implemented with such enthusiasm
+Rarely do you see challenges addressed as proactively
