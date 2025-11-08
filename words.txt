@@ -61,3 +61,4 @@ hindrance = obstaculo
 though = Aunque con 
 sharp eye = ojo agudo
 tenfold =  diez veces
+Not only does he have the necessary education, but he also
