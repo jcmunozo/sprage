@@ -57,3 +57,7 @@ trust me
 come here
 Throw one self into = lanzarse contra 
 roadblock = obstaculo
+hindrance = obstaculo
+though = Aunque con 
+sharp eye = ojo agudo
+tenfold =  diez veces
