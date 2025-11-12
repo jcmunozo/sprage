@@ -62,3 +62,5 @@ though = Aunque con
 sharp eye = ojo agudo
 tenfold =  diez veces
 Not only does he have the necessary education, but he also
+Do + verb infinitive = recomendacion
+Do make sure you chosse the correct time to say that = asegurate de elegir el tiempo correcto para decirlo
