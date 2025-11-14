@@ -77,4 +77,12 @@
   "language": "English",
   "variants": [""],
   "tags": ["formality"]
+},
+{
+  "_id": "463",
+  "phrase": "like father, like son",
+  "meaning": "have the way in words",
+  "language": "English",
+  "variants": [""],
+  "tags": ["formality"]
 }
