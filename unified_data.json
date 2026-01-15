@@ -1,1765 +1,552 @@
 [
   {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "in favor of = a favor de ",
-    "entry": "in favor of",
-    "translation": "a favor de",
-    "description": "",
-    "Language": "English",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "tirelessly = incansablemente",
-    "entry": "tirelessly",
-    "translation": "incansablemente",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "Rashly = precipitadamente",
-    "entry": "Rashly",
-    "translation": "precipitadamente",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "in a manner that is hasty = de manera apresurada",
-    "entry": "in a manner that is hasty",
-    "translation": "de manera apresurada",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "carry out = Llevar a cabo",
-    "entry": "carry out",
-    "translation": "Llevar a cabo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "better late than never",
-    "entry": "better late than never",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "properly=propiamente",
-    "entry": "properly",
-    "translation": "propiamente",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "in the know= en la juega",
-    "entry": "in the know",
-    "translation": "en la juega",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "cutting down= Reducir",
-    "entry": "cutting down",
-    "translation": "Reducir",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "how long = cuanto tiempo",
-    "entry": "how long",
-    "translation": "cuanto tiempo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "how it does it is not a concern = como lo hace, no es una preocupacion",
-    "entry": "how it does it is not a concern",
-    "translation": "como lo hace, no es una preocupacion",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "but you have to sit absolutely still = pero tienes que sentarte absolutamente quieto",
-    "entry": "but you have to sit absolutely still",
-    "translation": "pero tienes que sentarte absolutamente quieto",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "I'm telling yoo = te lo digo",
-    "entry": "I'm telling yoo",
-    "translation": "te lo digo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "far before = Mucho antes",
-    "entry": "far before",
-    "translation": "Mucho antes",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "even I would rather be watching= incluso yo preferiria estar viendo ...",
-    "entry": "even I would rather be watching",
-    "translation": "incluso yo preferiria estar viendo ...",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "nowhere near that= Ni de serca",
-    "entry": "nowhere near that",
-    "translation": "Ni de serca",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "when do we get to see the sun = cuando podremos ver el sol",
-    "entry": "when do we get to see the sun",
-    "translation": "cuando podremos ver el sol",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "by default = por defecto",
-    "entry": "by default",
-    "translation": "por defecto",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "in the know = sabidos",
-    "entry": "in the know",
-    "translation": "sabidos",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "the more diverse the team members' backgrouds, the greather collaboration and innovation we can expect",
-    "entry": "the more diverse the team members' backgrouds, the greather collaboration and innovation we can expect",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "the more alignment between individual and company values, the higher the job satisfaction and engagement levels are",
-    "entry": "the more alignment between individual and company values, the higher the job satisfaction and engagement levels are",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "The less a leader beats around the bush, the more likely things are to get done",
-    "entry": "The less a leader beats around the bush, the more likely things are to get done",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I am really drawn to laura's leadership style",
-    "entry": "I am really drawn to laura's leadership style",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Laura used to be a really prominent leader",
-    "entry": "Laura used to be a really prominent leader",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If needed,.... If necessary, If required.... Instead of If it is required..",
-    "entry": "If needed,.... If necessary, If required.... Instead of If it is required..",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "past + would = ia ej: presumia, acogia, hacia",
-    "entry": "past + would",
-    "translation": "ia ej: presumia, acogia, hacia",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I had a mate who would boast about his knowledge",
-    "entry": "I had a mate who would boast about his knowledge",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "When I first started working remotly, I would check (revisaba) my emails every 10 minutes to make sure I didn't miss anything",
-    "entry": "When I first started working remotly, I would check (revisaba) my emails every 10 minutes to make sure I didn't miss anything",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "In my previous job, I would stay late to finish reports before deadlines",
-    "entry": "In my previous job, I would stay late to finish reports before deadlines",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "My manager would always encourage us (nos animaba) to take short breaks to stay focused",
-    "entry": "My manager would always encourage us (nos animaba) to take short breaks to stay focused",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "When I worked in a team, we would have brainstorming sessions every friday morning",
-    "entry": "When I worked in a team, we would have brainstorming sessions every friday morning",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "If needed, Alex would allocate additional resources = Si fuera necesario, alex asignaria recursos ...",
-    "entry": "If needed, Alex would allocate additional resources",
-    "translation": "Si fuera necesario, alex asignaria recursos ...",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "In the past when facing challenges, alex would remain focused on the objectives",
-    "entry": "In the past when facing challenges, alex would remain focused on the objectives",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "yellow-bellied = coward",
-    "entry": "yellow-bellied",
-    "translation": "coward",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "Works like a charm = Works very well or as expected",
-    "entry": "Works like a charm",
-    "translation": "Works very well or as expected",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "if needed = Si es necesario",
-    "entry": "if needed",
-    "translation": "Si es necesario",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Rarely will innovative ideas be welcomed so enthusiastically",
-    "entry": "Rarely will innovative ideas be welcomed so enthusiastically",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Not only are their insights valuable, but they are also appreciated by the entire team",
-    "entry": "Not only are their insights valuable, but they are also appreciated by the entire team",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "not only does the manager articulate clear goals, but she will also keep the team motivated to achieve them",
-    "entry": "not only does the manager articulate clear goals, but she will also keep the team motivated to achieve them",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "rarely do you see such innovative solutions to complex problems implemented with such enthusiasm",
-    "entry": "rarely do you see such innovative solutions to complex problems implemented with such enthusiasm",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Rarely do you see challenges addressed as proactively",
-    "entry": "Rarely do you see challenges addressed as proactively",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Feeling overwhelmed by social pressures, many teenagers struggle with mental health issues",
-    "entry": "Feeling overwhelmed by social pressures, many teenagers struggle with mental health issues",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "striving for acceptance",
-    "entry": "striving for acceptance",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "hoping to avoid social exclusion",
-    "entry": "hoping to avoid social exclusion",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "my peers influence",
-    "entry": "my peers influence",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "beats around the bush",
-    "entry": "beats around the bush",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "take the bull by the horns",
-    "entry": "take the bull by the horns",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "The campus was big, but even so, I could find my way around",
-    "entry": "The campus was big, but even so, I could find my way around",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I was always organized but even then, I struggled with time management in college",
-    "entry": "I was always organized but even then, I struggled with time management in college",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I was able to balance my social lige and coursework, but only by sacrificing sleep",
-    "entry": "I was able to balance my social lige and coursework, but only by sacrificing sleep",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I was excited for the seminar, but only two people showed up",
-    "entry": "I was excited for the seminar, but only two people showed up",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I had to write a paper, but it was only then that I realized I had just a week to finish it ",
-    "entry": "I had to write a paper, but it was only then that I realized I had just a week to finish it",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Having said that, social pressure also lead to stress and burnout",
-    "entry": "Having said that, social pressure also lead to stress and burnout",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Having said that, it is important to recognize the benefits of working hard",
-    "entry": "Having said that, it is important to recognize the benefits of working hard",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "\"Having said that\" acknowledges a potential counterargument, while \"but then again\" presents a different perspective on the same topic",
-    "entry": "\"Having said that\" acknowledges a potential counterargument, while \"but then again\" presents a different perspective on the same topic",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "trust me ",
-    "entry": "trust me",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "come here",
-    "entry": "come here",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "Throw one self into = lanzarse contra ",
-    "entry": "Throw one self into",
-    "translation": "lanzarse contra",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "roadblock = obstaculo",
-    "entry": "roadblock",
-    "translation": "obstaculo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "hindrance = obstaculo",
-    "entry": "hindrance",
-    "translation": "obstaculo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "though = Aunque con ",
-    "entry": "though",
-    "translation": "Aunque con",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "sharp eye = ojo agudo",
-    "entry": "sharp eye",
-    "translation": "ojo agudo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "tenfold =  diez veces",
-    "entry": "tenfold",
-    "translation": "diez veces",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Not only does he have the necessary education, but he also",
-    "entry": "Not only does he have the necessary education, but he also",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "Do + verb infinitive = recomendacion",
-    "entry": "Do + verb infinitive",
-    "translation": "recomendacion",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "word/phrase",
-    "source": "words.txt",
-    "original_entry": "Do make sure you chosse the correct time to say that = asegurate de elegir el tiempo correcto para decirlo",
-    "entry": "Do make sure you chosse the correct time to say that",
-    "translation": "asegurate de elegir el tiempo correcto para decirlo",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If I had had more money, I would be richer",
-    "entry": "If I had had more money, I would be richer",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If I had ",
-    "entry": "If I had",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If I hadn't eaten so much cake, I wouldn't feel sick now",
-    "entry": "If I hadn't eaten so much cake, I wouldn't feel sick now",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I would be happier If I had said",
-    "entry": "I would be happier If I had said",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "It's always better to address misunderstandings on the spot so they don't escalate later on ",
-    "entry": "It's always better to address misunderstandings on the spot so they don't escalate later on",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I'm 100% sure Jhon MUST have been angry about the way lisa corrected him",
-    "entry": "I'm 100% sure Jhon MUST have been angry about the way lisa corrected him",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I shouldn't have yelled at him. It was too agressive",
-    "entry": "I shouldn't have yelled at him. It was too agressive",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I cannot always  be as hard as nails.",
-    "entry": "I cannot always  be as hard as nails.",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Off topic: fuera de contexto",
-    "entry": "Off topic: fuera de contexto",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I was wondering IF we could meet later today to discuss the digital learning platform",
-    "entry": "I was wondering IF we could meet later today to discuss the digital learning platform",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "WOULD you mind TELLING me when the registration for this queater's traning sessions starts",
-    "entry": "WOULD you mind TELLING me when the registration for this queater's traning sessions starts",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "straight from the hourse's mouth",
-    "entry": "straight from the hourse's mouth",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If it is adventageous that he conect (Subjuntive)",
-    "entry": "If it is adventageous that he conect (Subjuntive)",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I propose that the team be promoted for their excellent results",
-    "entry": "I propose that the team be promoted for their excellent results",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "The progessional development plan proposes that workshops be implemented to enhance employees' skills",
-    "entry": "The progessional development plan proposes that workshops be implemented to enhance employees' skills",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "It is essential that the project timeline be followd to ensure timely completion.",
-    "entry": "It is essential that the project timeline be followd to ensure timely completion.",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "The proposal recommends that additional resources be allocated for research purposes",
-    "entry": "The proposal recommends that additional resources be allocated for research purposes",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "THe team leader proposed that a comprenhensive report be completed by the end of the week",
-    "entry": "THe team leader proposed that a comprenhensive report be completed by the end of the week",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "My brother, an accomplished pianist, will perform tonight",
-    "entry": "My brother, an accomplished pianist, will perform tonight",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "The tall and strong basketball player, lebron James, scored a lot of points.",
-    "entry": "The tall and strong basketball player, lebron James, scored a lot of points.",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "My favorute hobby, playing the guitar, keeps me entertained",
-    "entry": "My favorute hobby, playing the guitar, keeps me entertained",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Some times it's important to push back when discussing ideas in order to look into other alternatives",
-    "entry": "Some times it's important to push back when discussing ideas in order to look into other alternatives",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I'm afraid I take issue with your idea, I dont think it will work ",
-    "entry": "I'm afraid I take issue with your idea, I dont think it will work",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I tried to argue but he countered that the plans were not finished",
-    "entry": "I tried to argue but he countered that the plans were not finished",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Are you aware of the challenges .....",
-    "entry": "Are you aware of the challenges .....",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "I often plays devil's advocate in team discussions to make sure there's room for the ideas",
-    "entry": "I often plays devil's advocate in team discussions to make sure there's room for the ideas",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Appositive",
-    "entry": "Appositive",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Bet I would've",
-    "entry": "Bet I would've",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "Adjuntive",
-    "entry": "Adjuntive",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "If you fall, get back up",
-    "entry": "If you fall, get back up",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "phrase",
-    "source": "words.txt",
-    "original_entry": "When did you move to chicago?",
-    "entry": "When did you move to chicago?",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": "{\n  \"_id\": \"123\",\n  \"title\": \"For + -ing\",\n  \"description\": \"Used to express purpose\",\n  \"examples\": [\"This tool is for cutting.\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "For + -ing",
-    "translation": "",
-    "description": "Used to express purpose",
-    "example": "This tool is for cutting.",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"124\",\n  \"title\": \"Not only .... But also\",\n  \"description\": \"Used to express purpose\",\n  \"examples\": [\"This tool is for cutting.\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "Not only .... But also",
-    "translation": "",
-    "description": "Used to express purpose",
-    "example": "This tool is for cutting.",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"125\",\n  \"title\": \"I am amazed at how\",\n  \"description\": \"Used to express admiration\",\n  \"examples\": [\"This tool is for cutting.\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "I am amazed at how",
-    "translation": "",
-    "description": "Used to express admiration",
-    "example": "This tool is for cutting.",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"126\",\n  \"title\": \"I hope to\",\n  \"description\": \"\",\n  \"examples\": [\"\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "I hope to",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"126\",\n  \"title\": \"I keep learning\",\n  \"description\": \"\",\n  \"examples\": [\"\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "I keep learning",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"126\",\n  \"title\": \"In doing so\",\n  \"description\": \"Al hacerlo\",\n  \"examples\": [\"\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "In doing so",
-    "translation": "",
-    "description": "Al hacerlo",
-    "example": "",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"127\",\n  \"title\": \"bury the hatche\",\n  \"description\": \"Al hacerlo\",\n  \"examples\": [\"\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "bury the hatche",
-    "translation": "",
-    "description": "Al hacerlo",
-    "example": "",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
-    "type": "grammar",
-    "source": "grammar.json",
-    "original_entry": ",\n{\n  \"_id\": \"128\",\n  \"title\": \"\",\n  \"description\":\"\",\n  \"examples\": [\"\"],\n  \"difficulty\": \"intermediate\",\n  \"tags\": [\"prepositions\", \"verbs\"]\n",
-    "entry": "",
-    "translation": "",
-    "description": "",
-    "example": "",
-    "tags": [
-      "prepositions",
-      "verbs"
-    ]
-  },
-  {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": "{\n  \"_id\": \"456\",\n  \"phrase\": \"Cross the T's\",\n  \"meaning\": \"Be meticulous\",\n  \"language\": \"English\",\n  \"variants\": [\"Dot the I's\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "Cross the T's",
-    "translation": "",
-    "description": "Be meticulous",
+    "language": "English",
+    "front": "Cross the T's",
+    "back": "Be meticulous",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 0
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"457\",\n  \"phrase\": \"Pretty good\",\n  \"meaning\": \"Be meticulous\",\n  \"language\": \"English\",\n  \"variants\": [\"Dot the I's\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "Pretty good",
-    "translation": "",
-    "description": "Be meticulous",
+    "language": "English",
+    "front": "Pretty good",
+    "back": "Be meticulous",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 1
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"458\",\n  \"phrase\": \"face the music\",\n  \"meaning\": \"acept the concequence\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "face the music",
-    "translation": "",
-    "description": "acept the concequence",
+    "language": "English",
+    "front": "face the music",
+    "back": "acept the concequence",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 2
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"457\",\n  \"phrase\": \"under de water\",\n  \"meaning\": \"In a bad situation\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "under de water",
-    "translation": "",
-    "description": "In a bad situation",
+    "language": "English",
+    "front": "under de water",
+    "back": "In a bad situation",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 3
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"458\",\n  \"phrase\": \"control the room\",\n  \"meaning\": \"Take control of your feelings\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "control the room",
-    "translation": "",
-    "description": "Take control of your feelings",
+    "language": "English",
+    "front": "control the room",
+    "back": "Take control of your feelings",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 4
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"459\",\n  \"phrase\": \"have the way in words\",\n  \"meaning\": \"have the way in words\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "have the way in words",
-    "translation": "",
-    "description": "have the way in words",
+    "language": "English",
+    "front": "have the way in words",
+    "back": "have the way in words",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 5
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"460\",\n  \"phrase\": \"talking the same language\",\n  \"meaning\": \"have the way in words\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "talking the same language",
-    "translation": "",
-    "description": "have the way in words",
+    "language": "English",
+    "front": "talking the same language",
+    "back": "have the way in words",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 6
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"461\",\n  \"phrase\": \"talking the same language\",\n  \"meaning\": \"have the way in words\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "talking the same language",
-    "translation": "",
-    "description": "have the way in words",
+    "language": "English",
+    "front": "talking the same language",
+    "back": "have the way in words",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 7
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"462\",\n  \"phrase\": \"we must have reduced the issues, if we were..\",\n  \"meaning\": \"have the way in words\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "we must have reduced the issues, if we were..",
-    "translation": "",
-    "description": "have the way in words",
+    "language": "English",
+    "front": "we must have reduced the issues, if we were..",
+    "back": "have the way in words",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 8
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"463\",\n  \"phrase\": \"we must have reduced the issues, if we were..\",\n  \"meaning\": \"have the way in words\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "we must have reduced the issues, if we were..",
-    "translation": "",
-    "description": "have the way in words",
+    "language": "English",
+    "front": "we must have reduced the issues, if we were..",
+    "back": "have the way in words",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 9
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"464\",\n  \"phrase\": \"like father, like son\",\n  \"meaning\": \"Sons often are similar to their parents\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "like father, like son",
-    "translation": "",
-    "description": "Sons often are similar to their parents",
+    "language": "English",
+    "front": "like father, like son",
+    "back": "Sons often are similar to their parents",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 10
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"465\",\n  \"phrase\": \"Then again\",\n  \"meaning\": \"Contradictory\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "Then again",
-    "translation": "",
-    "description": "Contradictory",
+    "language": "English",
+    "front": "Then again",
+    "back": "Contradictory",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 11
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"466\",\n  \"phrase\": \"straigh the horses mouth\",\n  \"meaning\": \"Contradictory\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"formality\"]\n",
-    "entry": "straigh the horses mouth",
-    "translation": "",
-    "description": "Contradictory",
+    "language": "English",
+    "front": "straigh the horses mouth",
+    "back": "Contradictory",
     "example": "",
     "tags": [
       "formality"
-    ]
+    ],
+    "id": 12
   },
   {
     "type": "idiom",
-    "source": "idioms.json",
-    "original_entry": ",\n{\n  \"_id\": \"467\",\n  \"phrase\": \"Acid test\",\n  \"meaning\": \"Proves the effectiveness of something\",\n  \"language\": \"English\",\n  \"variants\": [\"\"],\n  \"tags\": [\"\"]\n",
-    "entry": "Acid test",
-    "translation": "",
-    "description": "Proves the effectiveness of something",
+    "language": "English",
+    "front": "Acid test",
+    "back": "Proves the effectiveness of something",
     "example": "",
     "tags": [
       ""
-    ]
+    ],
+    "id": 13
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "[\n  {\n    \"subject + ing\":[\n      \"example\": \"I sujest meeting with them\"\n    ]",
-    "entry": "example",
-    "translation": "I sujest meeting with them",
-    "description": "",
-    "example": "",
-    "tags": []
+    "language": "English",
+    "front": "For + -ing",
+    "back": "Used to express purpose",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 14
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"By the book\": \"Al pie de la letra\"",
-    "entry": "By the book",
-    "translation": "Al pie de la letra",
-    "description": "",
-    "example": "",
-    "tags": []
+    "language": "English",
+    "front": "Not only .... But also",
+    "back": "Used to express purpose",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 15
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"By the way\": \"Por cierto\"",
-    "entry": "By the way",
-    "translation": "Por cierto",
-    "description": "",
-    "example": "",
-    "tags": []
+    "language": "English",
+    "front": "I am amazed at how",
+    "back": "Used to express admiration",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 16
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Dammn\": \"Maldicion\"",
-    "entry": "Dammn",
-    "translation": "Maldicion",
-    "description": "",
+    "language": "English",
+    "front": "I hope to",
+    "back": "Esperar algo",
     "example": "",
-    "tags": []
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 17
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Put it down\": \"Ponlo en el suelo\"",
-    "entry": "Put it down",
-    "translation": "Ponlo en el suelo",
-    "description": "",
+    "language": "English",
+    "front": "In doing so",
+    "back": "Al hacerlo",
     "example": "",
-    "tags": []
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 18
   },
   {
     "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Thinking outside the box\": \"Pensar diferente\"",
-    "entry": "Thinking outside the box",
-    "translation": "Pensar diferente",
-    "description": "",
+    "language": "English",
+    "front": "bury the hatche",
+    "back": "Al hacerlo",
     "example": "",
-    "tags": []
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 19
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Neither ... nor...\":\"Ni... Ni...\"",
-    "entry": "Neither ... nor...",
-    "translation": "Ni... Ni...",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "in favor of",
+    "back": "a favor de",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 20
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Bound to\": \"\"",
-    "entry": "Bound to",
-    "translation": "",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "tirelessly",
+    "back": "incansablemente",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 21
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"deserve\": \"Merecido\"",
-    "entry": "deserve",
-    "translation": "Merecido",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "Rashly",
+    "back": "precipitadamente",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 22
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"While\": \"si bien\"",
-    "entry": "While",
-    "translation": "si bien",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "in a manner that is hasty",
+    "back": "de manera apresurada",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 23
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"I wish I could\": \"Ojala pudiera\"",
-    "entry": "I wish I could",
-    "translation": "Ojala pudiera",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "carry out",
+    "back": "Llevar a cabo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 24
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"I wish I had took\": \"Ojala hubiera tomado\"",
-    "entry": "I wish I had took",
-    "translation": "Ojala hubiera tomado",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "properly",
+    "back": "propiamente",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 25
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"If only\": \"Si tan solo\"",
-    "entry": "If only",
-    "translation": "Si tan solo",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "in the know",
+    "back": "en la juega",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 26
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"would prefer... rather\": \"preferiria esto en lugar de aquello\"",
-    "entry": "would prefer... rather",
-    "translation": "preferiria esto en lugar de aquello",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "cutting down",
+    "back": "Reducir",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 27
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"regret + infinitive\": \"we regret to inform\"",
-    "entry": "regret + infinitive",
-    "translation": "we regret to inform",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "how long",
+    "back": "cuanto tiempo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 28
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"be sorry + infinitive\": \"I am very sorry to tell you\"",
-    "entry": "be sorry + infinitive",
-    "translation": "I am very sorry to tell you",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "how it does it is not a concern",
+    "back": "como lo hace, no es una preocupacion",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 29
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"as soon as we can \":\" Tan pronto como podamos\"",
-    "entry": "as soon as we can ",
-    "translation": " Tan pronto como podamos",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "but you have to sit absolutely still",
+    "back": "pero tienes que sentarte absolutamente quieto",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 30
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"get over\": \"\"",
-    "entry": "get over",
-    "translation": "",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "I'm telling yoo",
+    "back": "te lo digo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 31
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"get off\": \"\"",
-    "entry": "get off",
-    "translation": "",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "far before",
+    "back": "Mucho antes",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 32
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"feel like\": \"me gustaria\"",
-    "entry": "feel like",
-    "translation": "me gustaria",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "even I would rather be watching",
+    "back": "incluso yo preferiria estar viendo ...",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 33
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"knuckle down\": \"\"\n    \"you risk\": \"Te arriesgas\"",
-    "entry": "knuckle down",
-    "translation": "",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "nowhere near that",
+    "back": "Ni de serca",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 34
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"you are used to\": \"te acostumbras\"\n  }",
-    "entry": "you are used to",
-    "translation": "te acostumbras",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "when do we get to see the sun",
+    "back": "cuando podremos ver el sol",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 35
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n  {\n    \"Be Bound\":\"We use bound to say that we are quite certain that something will be true or happen in the future\"",
-    "entry": "Be Bound",
-    "translation": "",
-    "description": "We use bound to say that we are quite certain that something will be true or happen in the future",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "by default",
+    "back": "por defecto",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 36
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Be sure to\":\"We use bound to say that we are quite certain that something will be true or happen in the future\"",
-    "entry": "Be sure to",
-    "translation": "",
-    "description": "We use bound to say that we are quite certain that something will be true or happen in the future",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "in the know",
+    "back": "sabidos",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 37
   },
   {
-    "type": "grammar",
-    "source": "gramatic.json",
-    "original_entry": "\n    \"Be unlikely\":\"If something is likely to happen\"\n  }\n]\n",
-    "entry": "Be unlikely",
-    "translation": "",
-    "description": "If something is likely to happen",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "past + would",
+    "back": "ia ej: presumia, acogia, hacia",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 38
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "[\n  \"english\":{\n    \"hi\": \"Hola\"",
-    "entry": "hi",
-    "translation": "Hola",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "If needed, Alex would allocate additional resources",
+    "back": "Si fuera necesario, alex asignaria recursos ...",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 39
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"Morning\": \"Buenos dias\"",
-    "entry": "Morning",
-    "translation": "Buenos dias",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "yellow-bellied",
+    "back": "coward",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 40
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"Afternoon\": \"Tardes\"",
-    "entry": "Afternoon",
-    "translation": "Tardes",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "Works like a charm",
+    "back": "Works very well or as expected",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 41
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"annoy\": \"molesto\"",
-    "entry": "annoy",
-    "translation": "molesto",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "if needed",
+    "back": "Si es necesario",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 42
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"So far\": \"Hasta ahora\"",
-    "entry": "So far",
-    "translation": "Hasta ahora",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "Throw one self into",
+    "back": "lanzarse contra",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 43
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"delve deeper into\": \"Profundizar\"",
-    "entry": "delve deeper into",
-    "translation": "Profundizar",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "roadblock",
+    "back": "obstaculo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 44
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"Arent I\": \"verdad que o lo soy\"",
-    "entry": "Arent I",
-    "translation": "verdad que o lo soy",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "hindrance",
+    "back": "obstaculo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 45
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"so that\": \"por lo tanto\"",
-    "entry": "so that",
-    "translation": "por lo tanto",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "though",
+    "back": "Aunque con",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 46
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"right away\": \"de inmediato\"",
-    "entry": "right away",
-    "translation": "de inmediato",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "sharp eye",
+    "back": "ojo agudo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 47
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"rely on\": \"confiar en\"\n  }",
-    "entry": "rely on",
-    "translation": "confiar en",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "tenfold",
+    "back": "diez veces",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 48
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  \"german\":{\n    \"hallo\":\"Hola\"",
-    "entry": "hallo",
-    "translation": "Hola",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "Do + verb infinitive",
+    "back": "recomendacion",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 49
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"Wie geths\": \"Como estas\"",
-    "entry": "Wie geths",
-    "translation": "Como estas",
-    "description": "",
+    "type": "vocabulary",
+    "language": "Mixed",
+    "front": "Do make sure you chosse the correct time to say that",
+    "back": "asegurate de elegir el tiempo correcto para decirlo",
     "example": "",
-    "tags": []
+    "tags": [],
+    "id": 50
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    \"Guten Tag\": \"Buenos dias\"\n  }",
-    "entry": "Guten Tag",
-    "translation": "Buenos dias",
-    "description": "",
-    "example": "",
-    "tags": []
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "rechazar",
+    "back": "turn down",
+    "example": "I'll have to turn down the invitation",
+    "tags": [],
+    "id": 51
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  {\n    \"Not only .... but also\": \"no solo es para .... sino tambien\"\n  }",
-    "entry": "Not only .... but also",
-    "translation": "no solo es para .... sino tambien",
-    "description": "",
-    "example": "",
-    "tags": []
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "por",
+    "back": "Because of",
+    "example": "Because of the wheter",
+    "tags": [],
+    "id": 52
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  {\n  \"_id\": \"789\"",
-    "entry": "_id",
-    "translation": "789",
-    "description": "",
-    "example": "",
-    "tags": []
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "urgente",
+    "back": "Pressing",
+    "example": "Because of a pressing issue",
+    "tags": [],
+    "id": 53
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  \"word\": \"Wish\"",
-    "entry": "word",
-    "translation": "Wish",
-    "description": "",
-    "example": "",
-    "tags": []
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "repasar",
+    "back": "brush up",
+    "example": "I scheduled a meeting with you to go over lifting",
+    "tags": [],
+    "id": 54
   },
   {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  \"part_of_speech\": \"verb\"",
-    "entry": "part_of_speech",
-    "translation": "verb",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n  \"definitions\": [\n    { \"meaning\": \"Desire something impossible\"",
-    "entry": "meaning",
-    "translation": "Desire something impossible",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": " \"example\": \"I wish I were rich.\" }",
-    "entry": "example",
-    "translation": "I wish I were rich.",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    { \"meaning\": \"Desire something impossible\"",
-    "entry": "meaning",
-    "translation": "Desire something impossible",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": " \"example\": \"I wish I were rich.\" }",
-    "entry": "example",
-    "translation": "I wish I were rich.",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": "\n    { \"meaning\": \"Desire something impossible\"",
-    "entry": "meaning",
-    "translation": "Desire something impossible",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "idiomatics.json",
-    "original_entry": " \"example\": \"I wish I were rich.\" }\n  ]\n  }\n]\n",
-    "entry": "example",
-    "translation": "I wish I were rich.",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "new",
-    "original_entry": "",
-    "entry": "Painting everyone with the same brush",
-    "translation": "Make a generalization about a group of people",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "new",
-    "original_entry": "",
-    "entry": "Painting everyone with the same brush",
-    "translation": "Make a generalization about a group of people",
-    "description": "",
-    "example": "",
-    "tags": []
-  },
-  {
-    "type": "idiom",
-    "source": "new",
-    "original_entry": "",
-    "entry": "Why is cultural diversity important in the workplace",
-    "translation": "Por qur es la diversidad cultural importante en el trabajo",
-    "description": "",
-    "example": "",
-    "tags": []
-  }
-  {
-    "type": "idiom",
-    "source": "new",
-    "original_entry": "",
-    "entry": "Cauca university which is entirely online, is my first choice",
-    "translation": "Por qur es la diversidad cultural importante en el trabajo",
-    "description": "",
-    "example": "",
-    "tags": []
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "hacer seguimiento",
+    "back": "keep track",
+    "example": "I am not able to keep track of all our emails",
+    "tags": [],
+    "id": 55
   }
 ]
