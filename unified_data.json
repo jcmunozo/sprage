@@ -548,5 +548,750 @@
     "example": "I am not able to keep track of all our emails",
     "tags": [],
     "id": 55
+  },
+  {
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "rechazar",
+    "back": "turn down",
+    "example": "I'll have to turn down the invitation",
+    "tags": [],
+    "id": 56
+  },
+  {
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "por",
+    "back": "Because of",
+    "example": "Because of the wheter",
+    "tags": [],
+    "id": 57
+  },
+  {
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "urgente",
+    "back": "Pressing",
+    "example": "Because of a pressing issue",
+    "tags": [],
+    "id": 58
+  },
+  {
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "repasar",
+    "back": "brush up",
+    "example": "I scheduled a meeting with you to go over lifting",
+    "tags": [],
+    "id": 59
+  },
+  {
+    "type": "vocabulary",
+    "language": "Spanish-English",
+    "front": "hacer seguimiento",
+    "back": "keep track",
+    "example": "I am not able to keep track of all our emails",
+    "tags": [],
+    "id": 60
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "subject + ing",
+    "back": "",
+    "example": "I sujest meeting with them",
+    "tags": [],
+    "id": 61
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "By the book",
+    "back": "Al pie de la letra",
+    "example": "",
+    "tags": [],
+    "id": 62
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "By the way",
+    "back": "Por cierto",
+    "example": "",
+    "tags": [],
+    "id": 63
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Dammn",
+    "back": "Maldicion",
+    "example": "",
+    "tags": [],
+    "id": 64
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Put it down",
+    "back": "Ponlo en el suelo",
+    "example": "",
+    "tags": [],
+    "id": 65
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Thinking outside the box",
+    "back": "Pensar diferente",
+    "example": "",
+    "tags": [],
+    "id": 66
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Neither ... nor...",
+    "back": "Ni... Ni...",
+    "example": "",
+    "tags": [],
+    "id": 67
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Bound to",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 68
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "deserve",
+    "back": "Merecido",
+    "example": "",
+    "tags": [],
+    "id": 69
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "While",
+    "back": "si bien",
+    "example": "",
+    "tags": [],
+    "id": 70
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I wish I could",
+    "back": "Ojala pudiera",
+    "example": "",
+    "tags": [],
+    "id": 71
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I wish I had took",
+    "back": "Ojala hubiera tomado",
+    "example": "",
+    "tags": [],
+    "id": 72
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "If only",
+    "back": "Si tan solo",
+    "example": "",
+    "tags": [],
+    "id": 73
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "would prefer... rather",
+    "back": "preferiria esto en lugar de aquello",
+    "example": "",
+    "tags": [],
+    "id": 74
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "regret + infinitive",
+    "back": "we regret to inform",
+    "example": "",
+    "tags": [],
+    "id": 75
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "be sorry + infinitive",
+    "back": "I am very sorry to tell you",
+    "example": "",
+    "tags": [],
+    "id": 76
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "as soon as we can ",
+    "back": " Tan pronto como podamos",
+    "example": "",
+    "tags": [],
+    "id": 77
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "get over",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 78
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "get off",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 79
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "feel like",
+    "back": "me gustaria",
+    "example": "",
+    "tags": [],
+    "id": 80
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "knuckle down",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 81
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "you risk",
+    "back": "Te arriesgas",
+    "example": "",
+    "tags": [],
+    "id": 82
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "you are used to",
+    "back": "te acostumbras",
+    "example": "",
+    "tags": [],
+    "id": 83
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Be Bound",
+    "back": "We use bound to say that we are quite certain that something will be true or happen in the future",
+    "example": "",
+    "tags": [],
+    "id": 84
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Be sure to",
+    "back": "We use bound to say that we are quite certain that something will be true or happen in the future",
+    "example": "",
+    "tags": [],
+    "id": 85
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Be unlikely",
+    "back": "If something is likely to happen",
+    "example": "",
+    "tags": [],
+    "id": 86
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "For + -ing",
+    "back": "Used to express purpose",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 87
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Not only .... But also",
+    "back": "Used to express purpose",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 88
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I am amazed at how",
+    "back": "Used to express admiration",
+    "example": "This tool is for cutting.",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 89
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I hope to",
+    "back": "Esperar algo",
+    "example": "",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 90
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I keep learning",
+    "back": "",
+    "example": "",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 91
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "In doing so",
+    "back": "Al hacerlo",
+    "example": "",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 92
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "bury the hatche",
+    "back": "Al hacerlo",
+    "example": "",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 93
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "",
+    "back": "",
+    "example": "",
+    "tags": [
+      "prepositions",
+      "verbs"
+    ],
+    "id": 94
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "People in the united stated shake hands firmly, while people in France kiss on the check warmly",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 95
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "What is the primary function of adverbials of manner in a sentence? to modify verbs",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 96
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "I would just say controversial things",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 97
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "what is an appositive",
+    "back": "A noun or phrase that provides extra information abbout the same noun, ussually placed between commas",
+    "example": "",
+    "tags": [],
+    "id": 98
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "The five essential ingredients for effective communication are",
+    "back": "CLarity,brevity,contect, impact and value",
+    "example": "",
+    "tags": [],
+    "id": 99
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "Mr, Jordan, the CEO of our company, will lead the meeting",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 100
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "fidget",
+    "back": "The verb that describes small movement of your hands and feet through nervourness or impatience",
+    "example": "",
+    "tags": [],
+    "id": 101
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "stage fright",
+    "back": "The expresion that describes the feeling og nervousness before or during an appeareance before an audience",
+    "example": "",
+    "tags": [],
+    "id": 102
+  },
+  {
+    "type": "grammar",
+    "language": "English",
+    "front": "What we needed WAS an effective leader who could motivate us all",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 103
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "hi",
+    "back": "Hola",
+    "example": "",
+    "tags": [],
+    "id": 104
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "Morning",
+    "back": "Buenos dias",
+    "example": "",
+    "tags": [],
+    "id": 105
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "Afternoon",
+    "back": "Tardes",
+    "example": "",
+    "tags": [],
+    "id": 106
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "annoy",
+    "back": "molesto",
+    "example": "",
+    "tags": [],
+    "id": 107
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "So far",
+    "back": "Hasta ahora",
+    "example": "",
+    "tags": [],
+    "id": 108
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "delve deeper into",
+    "back": "Profundizar",
+    "example": "",
+    "tags": [],
+    "id": 109
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "Arent I",
+    "back": "verdad que o lo soy",
+    "example": "",
+    "tags": [],
+    "id": 110
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "so that",
+    "back": "por lo tanto",
+    "example": "",
+    "tags": [],
+    "id": 111
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "right away",
+    "back": "de inmediato",
+    "example": "",
+    "tags": [],
+    "id": 112
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "rely on",
+    "back": "confiar en",
+    "example": "",
+    "tags": [],
+    "id": 113
+  },
+  {
+    "type": "idiom",
+    "language": "German-Spanish",
+    "front": "hallo",
+    "back": "Hola",
+    "example": "",
+    "tags": [],
+    "id": 114
+  },
+  {
+    "type": "idiom",
+    "language": "German-Spanish",
+    "front": "Wie geths",
+    "back": "Como estas",
+    "example": "",
+    "tags": [],
+    "id": 115
+  },
+  {
+    "type": "idiom",
+    "language": "German-Spanish",
+    "front": "Guten Tag",
+    "back": "Buenos dias",
+    "example": "",
+    "tags": [],
+    "id": 116
+  },
+  {
+    "type": "idiom",
+    "language": "English-Spanish",
+    "front": "Not only .... but also",
+    "back": "no solo es para .... sino tambien",
+    "example": "",
+    "tags": [],
+    "id": 117
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "Wish",
+    "back": "Desire something impossible",
+    "example": "I wish I were rich.",
+    "tags": [],
+    "id": 118
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "Cross the T's",
+    "back": "Be meticulous",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 119
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "Pretty good",
+    "back": "Be meticulous",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 120
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "face the music",
+    "back": "acept the concequence",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 121
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "under de water",
+    "back": "In a bad situation",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 122
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "control the room",
+    "back": "Take control of your feelings",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 123
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "have the way in words",
+    "back": "have the way in words",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 124
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "talking the same language",
+    "back": "have the way in words",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 125
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "talking the same language",
+    "back": "have the way in words",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 126
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "we must have reduced the issues, if we were..",
+    "back": "have the way in words",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 127
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "we must have reduced the issues, if we were..",
+    "back": "have the way in words",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 128
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "like father, like son",
+    "back": "Sons often are similar to their parents",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 129
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "Then again",
+    "back": "Contradictory",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 130
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "straigh the horses mouth",
+    "back": "Contradictory",
+    "example": "",
+    "tags": [
+      "formality"
+    ],
+    "id": 131
+  },
+  {
+    "type": "idiom",
+    "language": "English",
+    "front": "Acid test",
+    "back": "Proves the effectiveness of something",
+    "example": "",
+    "tags": [
+      ""
+    ],
+    "id": 132
   }
 ]
