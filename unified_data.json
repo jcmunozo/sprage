@@ -1,4 +1,4 @@
-[
+
   {
     "type": "idiom",
     "language": "English",
@@ -1293,5 +1293,599 @@
       ""
     ],
     "id": 132
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "better late than never",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 133
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "the more diverse the team members' backgrouds, the greather collaboration and innovation we can expect",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 134
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "the more alignment between individual and company values, the higher the job satisfaction and engagement levels are",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 135
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "The less a leader beats around the bush, the more likely things are to get done",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 136
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I am really drawn to laura's leadership style",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 137
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Laura used to be a really prominent leader",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 138
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If needed,.... If necessary, If required.... Instead of If it is required..",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 139
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I had a mate who would boast about his knowledge",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 140
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "When I first started working remotly, I would check (revisaba) my emails every 10 minutes to make sure I didn't miss anything",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 141
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "In my previous job, I would stay late to finish reports before deadlines",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 142
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "My manager would always encourage us (nos animaba) to take short breaks to stay focused",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 143
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "When I worked in a team, we would have brainstorming sessions every friday morning",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 144
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "In the past when facing challenges, alex would remain focused on the objectives",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 145
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Rarely will innovative ideas be welcomed so enthusiastically",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 146
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Not only are their insights valuable, but they are also appreciated by the entire team",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 147
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "not only does the manager articulate clear goals, but she will also keep the team motivated to achieve them",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 148
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "rarely do you see such innovative solutions to complex problems implemented with such enthusiasm",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 149
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Rarely do you see challenges addressed as proactively",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 150
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Feeling overwhelmed by social pressures, many teenagers struggle with mental health issues",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 151
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "striving for acceptance",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 152
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "hoping to avoid social exclusion",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 153
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "my peers influence",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 154
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "beats around the bush",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 155
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "take the bull by the horns",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 156
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "The campus was big, but even so, I could find my way around",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 157
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I was always organized but even then, I struggled with time management in college",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 158
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I was able to balance my social lige and coursework, but only by sacrificing sleep",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 159
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I was excited for the seminar, but only two people showed up",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 160
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I had to write a paper, but it was only then that I realized I had just a week to finish it",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 161
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Having said that, social pressure also lead to stress and burnout",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 162
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Having said that, it is important to recognize the benefits of working hard",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 163
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "\"Having said that\" acknowledges a potential counterargument, while \"but then again\" presents a different perspective on the same topic",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 164
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "trust me",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 165
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "come here",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 166
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Not only does he have the necessary education, but he also",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 167
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If I had had more money, I would be richer",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 168
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If I had",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 169
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If I hadn't eaten so much cake, I wouldn't feel sick now",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 170
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I would be happier If I had said",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 171
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "It's always better to address misunderstandings on the spot so they don't escalate later on",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 172
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I'm 100% sure Jhon MUST have been angry about the way lisa corrected him",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 173
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I shouldn't have yelled at him. It was too agressive",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 174
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I cannot always  be as hard as nails.",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 175
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Off topic: fuera de contexto",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 176
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I was wondering IF we could meet later today to discuss the digital learning platform",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 177
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "WOULD you mind TELLING me when the registration for this queater's traning sessions starts",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 178
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "straight from the hourse's mouth",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 179
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If it is adventageous that he conect (Subjuntive)",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 180
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I propose that the team be promoted for their excellent results",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 181
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "The progessional development plan proposes that workshops be implemented to enhance employees' skills",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 182
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "It is essential that the project timeline be followd to ensure timely completion.",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 183
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "The proposal recommends that additional resources be allocated for research purposes",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 184
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "THe team leader proposed that a comprenhensive report be completed by the end of the week",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 185
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "My brother, an accomplished pianist, will perform tonight",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 186
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "The tall and strong basketball player, lebron James, scored a lot of points.",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 187
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "My favorute hobby, playing the guitar, keeps me entertained",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 188
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Some times it's important to push back when discussing ideas in order to look into other alternatives",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 189
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I'm afraid I take issue with your idea, I dont think it will work",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 190
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I tried to argue but he countered that the plans were not finished",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 191
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Are you aware of the challenges .....",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 192
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "I often plays devil's advocate in team discussions to make sure there's room for the ideas",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 193
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Appositive",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 194
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Bet I would've",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 195
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "Adjuntive",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 196
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "If you fall, get back up",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 197
+  },
+  {
+    "type": "vocabulary",
+    "language": "English",
+    "front": "When did you move to chicago?",
+    "back": "",
+    "example": "",
+    "tags": [],
+    "id": 198
   }
 ]
