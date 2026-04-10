@@ -1,26 +1,62 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { api } from './api';
+import AuthForm from './components/AuthForm';
 import CategorySelection from './components/CategorySelection';
 import Card from './components/Card';
 import AddCardForm from './components/AddCardForm';
-import data from '../unified_data.json';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [allCards, setAllCards] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cards, setCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAddCardForm, setShowAddCardForm] = useState(false);
-  const [allData, setAllData] = useState(data);
+  const [loadingCards, setLoadingCards] = useState(false);
+  const [error, setError] = useState('');
 
+  // Restore session from localStorage on mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const savedUser = localStorage.getItem('user');
+    if (token && savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  // Load cards from API when user logs in
+  useEffect(() => {
+    if (!user) return;
+    setLoadingCards(true);
+    api.cards.getAll()
+      .then(setAllCards)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoadingCards(false));
+  }, [user]);
+
+  // Filter and shuffle cards when category changes
   useEffect(() => {
     if (selectedCategory) {
-      const filteredCards = allData.filter(card => card.type === selectedCategory);
-      // shuffle the cards
-      const shuffledCards = filteredCards.sort(() => Math.random() - 0.5);
-      setCards(shuffledCards);
+      const filtered = allCards.filter((c) => c.type === selectedCategory);
+      setCards([...filtered].sort(() => Math.random() - 0.5));
       setCurrentCardIndex(0);
     }
-  }, [selectedCategory, allData]);
+  }, [selectedCategory, allCards]);
+
+  const handleAuth = (userData) => {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    setAllCards([]);
+    setSelectedCategory(null);
+    setShowAddCardForm(false);
+  };
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
@@ -28,37 +64,51 @@ function App() {
   };
 
   const handleNextCard = () => {
-    setCurrentCardIndex(prevIndex => (prevIndex + 1) % cards.length);
+    setCurrentCardIndex((prev) => (prev + 1) % cards.length);
   };
 
   const handleBackToCategories = () => {
     setSelectedCategory(null);
   };
 
-  const handleAddCard = (newCard) => {
-    const newId = allData.length > 0 ? Math.max(...allData.map(c => c.id)) + 1 : 0;
-    const cardWithId = { ...newCard, id: newId };
-    setAllData(prevData => [...prevData, cardWithId]);
-    setShowAddCardForm(false);
-    setSelectedCategory(newCard.type);
+  const handleAddCard = async (newCard) => {
+    try {
+      const created = await api.cards.create(newCard);
+      setAllCards((prev) => [...prev, created]);
+      setShowAddCardForm(false);
+      setSelectedCategory(newCard.type);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
-  const handleCancelAddCard = () => {
-    setShowAddCardForm(false);
-  };
-
-  const handleShowAddCard = () => {
-    setSelectedCategory(null);
-    setShowAddCardForm(true);
+  if (!user) {
+    return (
+      <>
+        <h1>Language Learning Cards</h1>
+        <AuthForm onAuth={handleAuth} />
+      </>
+    );
   }
 
   return (
     <>
-      <h1>Language Learning Cards</h1>
-      {showAddCardForm ? (
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>Language Learning Cards</h1>
+        <div>
+          <span style={{ marginRight: '1rem' }}>Hi, {user.username}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      </div>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {loadingCards ? (
+        <p>Loading cards...</p>
+      ) : showAddCardForm ? (
         <AddCardForm
           onAddCard={handleAddCard}
-          onCancel={handleCancelAddCard}
+          onCancel={() => setShowAddCardForm(false)}
         />
       ) : selectedCategory ? (
         <div>
@@ -72,7 +122,7 @@ function App() {
       ) : (
         <CategorySelection
           onSelectCategory={handleSelectCategory}
-          onShowAddCardForm={handleShowAddCard}
+          onShowAddCardForm={() => { setSelectedCategory(null); setShowAddCardForm(true); }}
         />
       )}
     </>

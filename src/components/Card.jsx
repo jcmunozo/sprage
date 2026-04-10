@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { api } from '../api';
+
+const QUALITY_BUTTONS = [
+  { label: 'Again', quality: 1 },
+  { label: 'Hard', quality: 3 },
+  { label: 'Good', quality: 4 },
+  { label: 'Easy', quality: 5 },
+];
 
 const Card = ({ card, onNext }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
 
-  const handleNext = () => {
-    setIsFlipped(false);
-    onNext();
+  const handleReview = async (quality) => {
+    setSubmitting(true);
+    try {
+      if (card._id) {
+        await api.progress.recordReview(card._id, quality);
+      }
+    } catch {
+      // progress recording is best-effort
+    } finally {
+      setSubmitting(false);
+      setIsFlipped(false);
+      onNext();
+    }
   };
 
   return (
@@ -25,7 +44,21 @@ const Card = ({ card, onNext }) => {
         </div>
       </div>
       <div className="card-actions">
-        <button onClick={handleNext}>Next</button>
+        {isFlipped ? (
+          <div className="quality-buttons">
+            {QUALITY_BUTTONS.map(({ label, quality }) => (
+              <button
+                key={quality}
+                onClick={() => handleReview(quality)}
+                disabled={submitting}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: '#888', fontSize: '0.9rem' }}>Click the card to reveal the answer</p>
+        )}
       </div>
     </div>
   );
