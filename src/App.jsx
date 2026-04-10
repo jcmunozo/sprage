@@ -16,16 +16,12 @@ function App() {
   const [loadingCards, setLoadingCards] = useState(false);
   const [error, setError] = useState('');
 
-  // Restore session from localStorage on mount
   useEffect(() => {
     const token = localStorage.getItem('token');
     const savedUser = localStorage.getItem('user');
-    if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
+    if (token && savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  // Load cards from API when user logs in
   useEffect(() => {
     if (!user) return;
     setLoadingCards(true);
@@ -35,7 +31,6 @@ function App() {
       .finally(() => setLoadingCards(false));
   }, [user]);
 
-  // Filter and shuffle cards when category changes
   useEffect(() => {
     if (selectedCategory) {
       const filtered = allCards.filter((c) => c.type === selectedCategory);
@@ -67,10 +62,6 @@ function App() {
     setCurrentCardIndex((prev) => (prev + 1) % cards.length);
   };
 
-  const handleBackToCategories = () => {
-    setSelectedCategory(null);
-  };
-
   const handleAddCard = async (newCard) => {
     try {
       const created = await api.cards.create(newCard);
@@ -85,7 +76,10 @@ function App() {
   if (!user) {
     return (
       <>
-        <h1>Language Learning Cards</h1>
+        <h1>Sprage</h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: '.85rem', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: '.5rem' }}>
+          Master languages through intelligent repetition
+        </p>
         <AuthForm onAuth={handleAuth} />
       </>
     );
@@ -93,36 +87,65 @@ function App() {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Language Learning Cards</h1>
-        <div>
-          <span style={{ marginRight: '1rem' }}>Hi, {user.username}</span>
-          <button onClick={handleLogout}>Logout</button>
+      <div className="top-bar">
+        <h1>Sprage</h1>
+        <div className="top-bar-user">
+          <span>Welcome, <strong>{user.username}</strong></span>
+          <button className="btn-ghost" onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error-msg" style={{ maxWidth: 480, margin: '0 auto 1.5rem' }}>{error}</p>}
 
       {loadingCards ? (
-        <p>Loading cards...</p>
+        <div className="loading">
+          <div className="loading-dots">
+            <span /><span /><span />
+          </div>
+          Loading your collection
+        </div>
       ) : showAddCardForm ? (
         <AddCardForm
           onAddCard={handleAddCard}
           onCancel={() => setShowAddCardForm(false)}
         />
       ) : selectedCategory ? (
-        <div>
-          <button onClick={handleBackToCategories}>Back to Categories</button>
+        <div className="card-container">
+          <div className="card-back-nav">
+            <button onClick={() => setSelectedCategory(null)}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Categories
+            </button>
+            <span style={{ color: 'var(--border-gold)' }}>›</span>
+            <span style={{ color: 'var(--gold)', textTransform: 'capitalize' }}>{selectedCategory}</span>
+          </div>
           {cards.length > 0 ? (
-            <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+            <>
+              <p className="card-counter">
+                Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
+              </p>
+              <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+            </>
           ) : (
-            <p>No cards in this category.</p>
+            <div style={{ padding: '3rem 0' }}>
+              <p>No cards in this category yet.</p>
+              <button style={{ marginTop: '1rem' }} onClick={() => { setSelectedCategory(null); setShowAddCardForm(true); }}>
+                Add your first card
+              </button>
+            </div>
           )}
         </div>
       ) : (
         <CategorySelection
           onSelectCategory={handleSelectCategory}
           onShowAddCardForm={() => { setSelectedCategory(null); setShowAddCardForm(true); }}
+          cardCounts={{
+            idiom: allCards.filter(c => c.type === 'idiom').length,
+            grammar: allCards.filter(c => c.type === 'grammar').length,
+            vocabulary: allCards.filter(c => c.type === 'vocabulary').length,
+          }}
         />
       )}
     </>
