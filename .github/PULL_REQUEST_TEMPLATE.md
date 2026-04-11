@@ -11,5 +11,3 @@
 **🔧 MODIFIED PROXY:** name proxy  
 **🎯 TARGET BACKEND:** name of the target  
 **⚠️ CONSIDERATIONS:** Without considerations  
-
----
