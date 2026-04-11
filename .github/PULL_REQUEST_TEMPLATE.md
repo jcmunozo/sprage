@@ -1,9 +1,9 @@
 ## 🚀 CHANGE TYPE
-[ ] Release  
-[ ] Feature  
-[ ] Hot Fix  
-[ ] Fix  
-[ ] Refactoring  
+* [ ] Release  
+* [ ] Feature  
+* [ ] Hot Fix  
+* [ ] Fix  
+* [ ] Refactoring  
 
 ---
 
