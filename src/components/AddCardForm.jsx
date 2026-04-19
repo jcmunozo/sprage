@@ -3,13 +3,13 @@ import { useState } from 'react';
 const TYPES       = ['idiom', 'grammar', 'vocabulary'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
 
-const AddCardForm = ({ onAddCard, onCancel }) => {
-  const [type,       setType]       = useState('vocabulary');
+const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
+  const [type,       setType]       = useState(defaultType || 'vocabulary');
   const [front,      setFront]      = useState('');
   const [back,       setBack]       = useState('');
   const [example,    setExample]    = useState('');
   const [category,   setCategory]   = useState('');
-  const [language,   setLanguage]   = useState('English');
+  const [language,   setLanguage]   = useState(defaultLanguage || 'English');
   const [difficulty, setDifficulty] = useState('intermediate');
   const [tagsInput,  setTagsInput]  = useState('');
   const [loading,    setLoading]    = useState(false);
@@ -38,11 +38,20 @@ const AddCardForm = ({ onAddCard, onCancel }) => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
           <div className="form-group">
             <label>Type</label>
-            <select value={type} onChange={(e) => setType(e.target.value)}>
-              {TYPES.map((t) => (
-                <option key={t} value={t}>{t.charAt(0).toUpperCase() + t.slice(1)}</option>
-              ))}
-            </select>
+            {defaultType ? (
+              <input
+                type="text"
+                value={type.charAt(0).toUpperCase() + type.slice(1)}
+                readOnly
+                style={{ opacity: 0.6, cursor: 'not-allowed' }}
+              />
+            ) : (
+              <select value={type} onChange={(e) => setType(e.target.value)}>
+                {TYPES.map((t) => (
+                  <option key={t} value={t}>{t.charAt(0).toUpperCase() + t.slice(1)}</option>
+                ))}
+              </select>
+            )}
           </div>
           <div className="form-group">
             <label>Difficulty</label>
@@ -61,8 +70,8 @@ const AddCardForm = ({ onAddCard, onCancel }) => {
             <input
               type="text"
               value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              placeholder="e.g. English"
+              readOnly
+              style={{ opacity: 0.6, cursor: 'not-allowed' }}
             />
           </div>
           <div className="form-group">

@@ -1,12 +1,26 @@
+import LanguageLinks from './LanguageLinks';
+
 const CATEGORIES = [
   { id: 'vocabulary', label: 'Vocabulary', icon: '词', description: 'Words & definitions' },
   { id: 'idiom',      label: 'Idioms',     icon: '語', description: 'Phrases & expressions' },
   { id: 'grammar',    label: 'Grammar',    icon: '文', description: 'Rules & structures' },
 ];
 
-const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {} }) => {
+const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {}, selectedLanguage, onBack, languageLinks = [], onAddLink, onRemoveLink }) => {
   return (
     <div className="category-selection">
+      {selectedLanguage && onBack && (
+        <div className="card-back-nav" style={{ justifyContent: 'flex-start', marginBottom: '1.5rem' }}>
+          <button onClick={onBack}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Languages
+          </button>
+          <span style={{ color: 'var(--border-gold)' }}>›</span>
+          <span style={{ color: 'var(--gold)' }}>{selectedLanguage?.name}</span>
+        </div>
+      )}
       <p style={{ color: 'var(--text-muted)', fontSize: '.8rem', letterSpacing: '.12em', textTransform: 'uppercase' }}>
         Choose a category to study
       </p>
@@ -41,6 +55,8 @@ const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {
         <p>Expand your collection</p>
         <button onClick={onShowAddCardForm}>+ Add New Card</button>
       </div>
+
+      <LanguageLinks links={languageLinks} language={selectedLanguage} onAddLink={onAddLink} onRemoveLink={onRemoveLink} />
     </div>
   );
 };

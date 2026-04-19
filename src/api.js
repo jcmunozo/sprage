@@ -18,7 +18,14 @@ async function request(path, options = {}) {
     headers: authHeaders(),
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(data.message || 'Request failed');
+  if (!res.ok) {
+    if (res.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.reload();
+    }
+    throw new Error(data.message || 'Request failed');
+  }
   return data;
 }
 
@@ -37,5 +44,17 @@ export const api = {
     getDue: () => request('/progress/due'),
     recordReview: (cardId, quality) =>
       request('/progress/review', { method: 'POST', body: JSON.stringify({ cardId, quality }) }),
+  },
+  languages: {
+    getAll: () => request('/languages'),
+    create: (data) => request('/languages', { method: 'POST', body: JSON.stringify(data) }),
+    update: (id, data) => request(`/languages/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    remove: (id) => request(`/languages/${id}`, { method: 'DELETE' }),
+  },
+  links: {
+    getAll: () => request('/links'),
+    getByLanguageId: (languageId) => request(`/links?languageId=${encodeURIComponent(languageId)}`),
+    create: (link) => request('/links', { method: 'POST', body: JSON.stringify(link) }),
+    remove: (id) => request(`/links/${id}`, { method: 'DELETE' }),
   },
 };
