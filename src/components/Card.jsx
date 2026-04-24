@@ -8,10 +8,10 @@ const QUALITY_BUTTONS = [
   { label: 'Easy',  sublabel: 'Too simple', quality: 5, cls: 'btn-easy'  },
 ];
 
-const DIFFICULTY_COLORS = {
-  beginner:     { color: '#70D890', border: 'rgba(60,180,100,.35)' },
-  intermediate: { color: '#E0B060', border: 'rgba(200,140,30,.35)' },
-  advanced:     { color: '#E08080', border: 'rgba(200,60,60,.35)'  },
+const DIFFICULTY_STYLES = {
+  beginner:     { color: '#3DCC82', border: 'rgba(61,204,130,.3)',   bg: 'rgba(61,204,130,.12)'  },
+  intermediate: { color: '#FFB38A', border: 'rgba(240,118,68,.3)',   bg: 'rgba(240,118,68,.12)'  },
+  advanced:     { color: '#E05555', border: 'rgba(224,85,85,.3)',    bg: 'rgba(224,85,85,.12)'   },
 };
 
 const Card = ({ card, onNext }) => {
@@ -31,7 +31,7 @@ const Card = ({ card, onNext }) => {
     }
   };
 
-  const diff = card.difficulty ? DIFFICULTY_COLORS[card.difficulty] || DIFFICULTY_COLORS.intermediate : null;
+  const diff = card.difficulty ? DIFFICULTY_STYLES[card.difficulty] || DIFFICULTY_STYLES.intermediate : null;
 
   return (
     <div>
@@ -39,7 +39,7 @@ const Card = ({ card, onNext }) => {
       <div
         className={`card ${isFlipped ? 'is-flipped' : ''}`}
         onClick={() => setIsFlipped(f => !f)}
-        style={{ height: card.example ? '300px' : '260px' }}
+        style={{ height: card.example ? '300px' : '280px' }}
       >
         <div className="card-inner">
 
@@ -47,12 +47,12 @@ const Card = ({ card, onNext }) => {
           <div className="card-face card-face-front">
             <span className="card-text">{card.front}</span>
             <div className="card-meta">
-              {card.category && <span className="badge badge-outline">{card.category}</span>}
               {diff && card.difficulty && (
-                <span className="badge" style={{ color: diff.color, borderColor: diff.border, background: diff.border }}>
+                <span className="badge" style={{ color: diff.color, borderColor: diff.border, background: diff.bg }}>
                   {card.difficulty}
                 </span>
               )}
+              {card.category && <span className="badge badge-outline">{card.category}</span>}
             </div>
           </div>
 
@@ -79,7 +79,7 @@ const Card = ({ card, onNext }) => {
                 disabled={submitting}
               >
                 <span className="quality-label">{label}</span>
-                <span style={{ fontSize: '.62rem', opacity: .7, fontWeight: 400, letterSpacing: '.04em', textTransform: 'none' }}>
+                <span style={{ fontSize: '.62rem', opacity: .8, fontWeight: 400, letterSpacing: '.04em', textTransform: 'none' }}>
                   {sublabel}
                 </span>
               </button>

@@ -118,101 +118,120 @@ function App() {
 
   if (!user) {
     return (
-      <>
+      <div className="auth-screen">
         <h1>Sprage</h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '.85rem', letterSpacing: '.1em', textTransform: 'uppercase', marginTop: '.5rem' }}>
-          Master languages through intelligent repetition
-        </p>
+        <p>Master languages through intelligent repetition</p>
         <AuthForm onAuth={handleAuth} />
-      </>
+      </div>
     );
   }
 
+  const showBreadcrumb = (selectedLanguage || selectedCategory) && !showAddCardForm;
+
   return (
     <>
-      <div className="top-bar">
+      {/* ── Sticky header ── */}
+      <header className="top-bar">
         <h1>Sprage</h1>
         <div className="top-bar-user">
           <span>Welcome, <strong>{user.username}</strong></span>
           <button className="btn-ghost" onClick={handleLogout}>Logout</button>
         </div>
-      </div>
+      </header>
 
-      {error && <p className="error-msg" style={{ maxWidth: 480, margin: '0 auto 1.5rem' }}>{error}</p>}
-
-      {loadingCards ? (
-        <div className="loading">
-          <div className="loading-dots">
-            <span /><span /><span />
-          </div>
-          Loading your collection
-        </div>
-      ) : showAddCardForm ? (
-        <AddCardForm
-          onAddCard={handleAddCard}
-          onCancel={() => setShowAddCardForm(false)}
-          defaultLanguage={selectedLanguage?.name}
-          defaultType={addCardDefaultType}
-        />
-      ) : selectedCategory ? (
-        <div className="card-container">
-          <div className="card-back-nav">
-            <button onClick={() => { setSelectedLanguage(null); setSelectedCategory(null); }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Languages
-            </button>
-            <span style={{ color: 'var(--border-gold)' }}>›</span>
-            <button onClick={() => setSelectedCategory(null)} style={{ color: 'var(--text-muted)', background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer', textTransform: 'uppercase', fontSize: '.8rem', letterSpacing: '.08em' }}>
-              {selectedLanguage?.name}
-            </button>
-            <span style={{ color: 'var(--border-gold)' }}>›</span>
-            <span style={{ color: 'var(--gold)', textTransform: 'capitalize' }}>{selectedCategory}</span>
-          </div>
-          {cards.length > 0 ? (
+      {/* ── Breadcrumb ── */}
+      {showBreadcrumb && (
+        <nav className="card-back-nav">
+          <button onClick={() => { setSelectedLanguage(null); setSelectedCategory(null); }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Languages
+          </button>
+          {selectedLanguage && (
             <>
-              <p className="card-counter">
-                Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
-              </p>
-              <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+              <span className="crumb-sep">›</span>
+              {selectedCategory
+                ? <span className="crumb-link" onClick={() => setSelectedCategory(null)}>{selectedLanguage.name}</span>
+                : <span className="crumb-active">{selectedLanguage.name}</span>
+              }
             </>
-          ) : (
-            <div style={{ padding: '3rem 0' }}>
-              <p>No cards in this category yet.</p>
-              <button style={{ marginTop: '1rem' }} onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}>
-                Add your first card
-              </button>
-            </div>
           )}
-        </div>
-      ) : selectedLanguage ? (
-        <CategorySelection
-          onSelectCategory={handleSelectCategory}
-          onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
-          cardCounts={{
-            idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
-            grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
-            vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
-          }}
-          selectedLanguage={selectedLanguage}
-          onBack={() => setSelectedLanguage(null)}
-          languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
-          onAddLink={handleAddLink}
-          onRemoveLink={handleRemoveLink}
-        />
-      ) : (
-        <LanguageSelection
-          languages={allLanguages}
-          cardCounts={allLanguages.reduce((acc, lang) => {
-            acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
-            return acc;
-          }, {})}
-          onSelectLanguage={handleSelectLanguage}
-          onShowAddCardForm={() => setShowAddCardForm(true)}
-          onAddLanguage={handleAddLanguage}
-        />
+          {selectedCategory && (
+            <>
+              <span className="crumb-sep">›</span>
+              <span className="crumb-active" style={{ textTransform: 'capitalize' }}>{selectedCategory}</span>
+            </>
+          )}
+        </nav>
       )}
+
+      {/* ── Main content ── */}
+      <main style={{ flex: 1 }}>
+        {error && (
+          <p className="error-msg" style={{ maxWidth: 540, margin: '1rem auto', padding: '0 32px' }}>{error}</p>
+        )}
+
+        {loadingCards ? (
+          <div className="loading">
+            <div className="loading-dots"><span /><span /><span /></div>
+            Loading your collection
+          </div>
+        ) : showAddCardForm ? (
+          <AddCardForm
+            onAddCard={handleAddCard}
+            onCancel={() => setShowAddCardForm(false)}
+            defaultLanguage={selectedLanguage?.name}
+            defaultType={addCardDefaultType}
+          />
+        ) : selectedCategory ? (
+          <div className="card-container">
+            {cards.length > 0 ? (
+              <>
+                <p className="card-counter">
+                  Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
+                </p>
+                <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+              </>
+            ) : (
+              <div style={{ padding: '3rem 0', textAlign: 'center' }}>
+                <p>No cards in this category yet.</p>
+                <button
+                  style={{ marginTop: '1rem' }}
+                  onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
+                >
+                  Add your first card
+                </button>
+              </div>
+            )}
+          </div>
+        ) : selectedLanguage ? (
+          <CategorySelection
+            onSelectCategory={handleSelectCategory}
+            onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
+            cardCounts={{
+              idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
+              grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
+              vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
+            }}
+            selectedLanguage={selectedLanguage}
+            languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
+            onAddLink={handleAddLink}
+            onRemoveLink={handleRemoveLink}
+          />
+        ) : (
+          <LanguageSelection
+            languages={allLanguages}
+            cardCounts={allLanguages.reduce((acc, lang) => {
+              acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
+              return acc;
+            }, {})}
+            onSelectLanguage={handleSelectLanguage}
+            onShowAddCardForm={() => setShowAddCardForm(true)}
+            onAddLanguage={handleAddLanguage}
+          />
+        )}
+      </main>
     </>
   );
 }

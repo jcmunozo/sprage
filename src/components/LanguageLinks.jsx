@@ -85,7 +85,7 @@ const LanguageLinks = ({ links = [], language, onAddLink, onRemoveLink }) => {
       )}
 
       {!links.length && !showForm && (
-        <p style={{ fontSize: '.75rem', color: 'var(--text-muted)', marginTop: '.5rem' }}>
+        <p style={{ fontSize: '.75rem', color: 'var(--fg-3)', marginTop: '.5rem' }}>
           No resources yet. Press + to add one.
         </p>
       )}

@@ -108,7 +108,7 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
         </div>
 
         <div className="form-group">
-          <label>Example sentence <span style={{ color: 'var(--text-muted)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+          <label>Example sentence <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
           <input
             type="text"
             value={example}
@@ -118,7 +118,7 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
         </div>
 
         <div className="form-group">
-          <label>Tags <span style={{ color: 'var(--text-muted)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(comma-separated, optional)</span></label>
+          <label>Tags <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(comma-separated, optional)</span></label>
           <input
             type="text"
             value={tagsInput}
