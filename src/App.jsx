@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import { api } from './api';
 import AuthForm from './components/AuthForm';
@@ -118,13 +119,23 @@ function App() {
 
   if (!user) {
     return (
-      <div className="auth-screen">
+      <motion.div
+        className="auth-screen"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h1>Sprage</h1>
         <p>Master languages through intelligent repetition</p>
         <AuthForm onAuth={handleAuth} />
-      </div>
+      </motion.div>
     );
   }
+
+  const viewKey = showAddCardForm ? 'add-form'
+    : selectedCategory   ? `cards-${selectedCategory}`
+    : selectedLanguage   ? `cats-${selectedLanguage._id}`
+    : 'languages';
 
   const showBreadcrumb = (selectedLanguage || selectedCategory) && !showAddCardForm;
 
@@ -172,65 +183,75 @@ function App() {
           <p className="error-msg" style={{ maxWidth: 540, margin: '1rem auto', padding: '0 32px' }}>{error}</p>
         )}
 
-        {loadingCards ? (
-          <div className="loading">
-            <div className="loading-dots"><span /><span /><span /></div>
-            Loading your collection
-          </div>
-        ) : showAddCardForm ? (
-          <AddCardForm
-            onAddCard={handleAddCard}
-            onCancel={() => setShowAddCardForm(false)}
-            defaultLanguage={selectedLanguage?.name}
-            defaultType={addCardDefaultType}
-          />
-        ) : selectedCategory ? (
-          <div className="card-container">
-            {cards.length > 0 ? (
-              <>
-                <p className="card-counter">
-                  Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
-                </p>
-                <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
-              </>
-            ) : (
-              <div style={{ padding: '3rem 0', textAlign: 'center' }}>
-                <p>No cards in this category yet.</p>
-                <button
-                  style={{ marginTop: '1rem' }}
-                  onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
-                >
-                  Add your first card
-                </button>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={viewKey}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {loadingCards ? (
+              <div className="loading">
+                <div className="loading-dots"><span /><span /><span /></div>
+                Loading your collection
               </div>
+            ) : showAddCardForm ? (
+              <AddCardForm
+                onAddCard={handleAddCard}
+                onCancel={() => setShowAddCardForm(false)}
+                defaultLanguage={selectedLanguage?.name}
+                defaultType={addCardDefaultType}
+              />
+            ) : selectedCategory ? (
+              <div className="card-container">
+                {cards.length > 0 ? (
+                  <>
+                    <p className="card-counter">
+                      Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
+                    </p>
+                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+                  </>
+                ) : (
+                  <div style={{ padding: '3rem 0', textAlign: 'center' }}>
+                    <p>No cards in this category yet.</p>
+                    <button
+                      style={{ marginTop: '1rem' }}
+                      onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
+                    >
+                      Add your first card
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : selectedLanguage ? (
+              <CategorySelection
+                onSelectCategory={handleSelectCategory}
+                onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
+                cardCounts={{
+                  idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
+                  grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
+                  vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
+                }}
+                selectedLanguage={selectedLanguage}
+                languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
+                onAddLink={handleAddLink}
+                onRemoveLink={handleRemoveLink}
+              />
+            ) : (
+              <LanguageSelection
+                languages={allLanguages}
+                cardCounts={allLanguages.reduce((acc, lang) => {
+                  acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
+                  return acc;
+                }, {})}
+                onSelectLanguage={handleSelectLanguage}
+                onShowAddCardForm={() => setShowAddCardForm(true)}
+                onAddLanguage={handleAddLanguage}
+              />
             )}
-          </div>
-        ) : selectedLanguage ? (
-          <CategorySelection
-            onSelectCategory={handleSelectCategory}
-            onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
-            cardCounts={{
-              idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
-              grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
-              vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
-            }}
-            selectedLanguage={selectedLanguage}
-            languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
-            onAddLink={handleAddLink}
-            onRemoveLink={handleRemoveLink}
-          />
-        ) : (
-          <LanguageSelection
-            languages={allLanguages}
-            cardCounts={allLanguages.reduce((acc, lang) => {
-              acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
-              return acc;
-            }, {})}
-            onSelectLanguage={handleSelectLanguage}
-            onShowAddCardForm={() => setShowAddCardForm(true)}
-            onAddLanguage={handleAddLanguage}
-          />
-        )}
+          </motion.div>
+        </AnimatePresence>
       </main>
     </>
   );

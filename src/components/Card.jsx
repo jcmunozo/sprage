@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { api } from '../api';
 
 const QUALITY_BUTTONS = [
@@ -34,11 +35,19 @@ const Card = ({ card, onNext }) => {
   const diff = card.difficulty ? DIFFICULTY_STYLES[card.difficulty] || DIFFICULTY_STYLES.intermediate : null;
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96, y: 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+    >
       {/* ── Flip card ── */}
       <div
         className={`card ${isFlipped ? 'is-flipped' : ''}`}
         onClick={() => setIsFlipped(f => !f)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsFlipped(f => !f)}
+        tabIndex={0}
+        role="button"
+        aria-label={isFlipped ? 'Card answer visible, press to flip back' : 'Press to reveal answer'}
         style={{ height: card.example ? '300px' : '280px' }}
       >
         <div className="card-inner">
@@ -70,7 +79,12 @@ const Card = ({ card, onNext }) => {
       {/* ── Actions ── */}
       <div className="card-actions">
         {isFlipped ? (
-          <div className="quality-buttons">
+          <motion.div
+            className="quality-buttons"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          >
             {QUALITY_BUTTONS.map(({ label, sublabel, quality, cls }) => (
               <button
                 key={quality}
@@ -84,12 +98,19 @@ const Card = ({ card, onNext }) => {
                 </span>
               </button>
             ))}
-          </div>
+          </motion.div>
         ) : (
-          <span className="flip-prompt">Tap to reveal</span>
+          <motion.span
+            className="flip-prompt"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
+          >
+            Tap to reveal
+          </motion.span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import LanguageLinks from './LanguageLinks';
 
 const CATEGORIES = [
@@ -6,14 +7,33 @@ const CATEGORIES = [
   { id: 'grammar',    label: 'Grammar',    icon: '文', description: 'Rules & structures' },
 ];
 
+const container = {
+  animate: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
+
+const item = {
+  initial: { opacity: 0, y: 20, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+};
+
 const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {}, selectedLanguage, languageLinks = [], onAddLink, onRemoveLink }) => {
   return (
     <div className="category-selection">
       <p>Choose a category to study</p>
 
-      <div className="category-buttons">
+      <motion.div
+        className="category-buttons"
+        variants={container}
+        initial="initial"
+        animate="animate"
+      >
         {CATEGORIES.map(({ id, label, icon, description }) => (
-          <button key={id} className="category-btn" onClick={() => onSelectCategory(id)}>
+          <motion.button
+            key={id}
+            className="category-btn"
+            variants={item}
+            onClick={() => onSelectCategory(id)}
+          >
             <span className="category-icon">{icon}</span>
             <span style={{ display: 'block', marginBottom: '.2rem' }}>{label}</span>
             <span style={{ display: 'block', fontSize: '.65rem', color: 'var(--fg-3)', textTransform: 'none', letterSpacing: '.03em', fontWeight: 400 }}>
@@ -33,9 +53,9 @@ const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {
                 {cardCounts[id]} cards
               </span>
             )}
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
 
       <div className="add-card-cta">
         <p>Expand your collection</p>

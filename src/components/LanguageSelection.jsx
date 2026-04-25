@@ -1,9 +1,19 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const LANG_COLORS = [
   '#3DCC82', '#4DA8E8', '#D4883A', '#E05555', '#C97CE8', '#FFB38A',
   '#52A97B', '#86D4A8', '#F07644', '#B8BDB4',
 ];
+
+const container = {
+  animate: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+};
+
+const item = {
+  initial: { opacity: 0, y: 18, scale: 0.95 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] } },
+};
 
 const LanguageSelection = ({ languages, cardCounts = {}, onSelectLanguage, onShowAddCardForm, onAddLanguage }) => {
   const [showNewLangForm, setShowNewLangForm] = useState(false);
@@ -30,21 +40,32 @@ const LanguageSelection = ({ languages, cardCounts = {}, onSelectLanguage, onSho
       <p>Choose a language to study</p>
 
       {languages.length === 0 && !showNewLangForm ? (
-        <div style={{ padding: '3rem 0' }}>
+        <motion.div
+          style={{ padding: '3rem 0' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.35 }}
+        >
           <p>No languages yet. Add one to get started.</p>
           <button style={{ marginTop: '1rem' }} onClick={() => setShowNewLangForm(true)}>
             + Add Language
           </button>
-        </div>
+        </motion.div>
       ) : (
-        <div className="category-buttons">
+        <motion.div
+          className="category-buttons"
+          variants={container}
+          initial="initial"
+          animate="animate"
+        >
           {languages.map((lang, i) => {
             const color = LANG_COLORS[i % LANG_COLORS.length];
             const code = lang.code ? lang.code.toUpperCase() : lang.name.slice(0, 2).toUpperCase();
             return (
-              <button
+              <motion.button
                 key={lang._id}
                 className="category-btn"
+                variants={item}
                 onClick={() => onSelectLanguage(lang)}
                 style={{ '--lang-color': color }}
                 onMouseEnter={e => {
@@ -73,14 +94,19 @@ const LanguageSelection = ({ languages, cardCounts = {}, onSelectLanguage, onSho
                     {cardCounts[lang._id]} cards
                   </span>
                 )}
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
       )}
 
       {showNewLangForm && (
-        <div className="add-card-form">
+        <motion.div
+          className="add-card-form"
+          initial={{ opacity: 0, y: 16, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h3>New Language</h3>
           <div className="gold-divider" />
           <form onSubmit={handleCreateLanguage}>
@@ -110,7 +136,7 @@ const LanguageSelection = ({ languages, cardCounts = {}, onSelectLanguage, onSho
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       )}
 
       {languages.length > 0 && !showNewLangForm && (
