@@ -619,18 +619,169 @@ button:disabled {
 
 .card-counter span { color: var(--fg-2); font-weight: 600; }
 
+/* ── Card wrapper (edit button) ─────────────────────────────── */
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.card-edit-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  color: var(--fg-3);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition), background var(--transition), border-color var(--transition);
+  box-shadow: none;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.card-wrapper:hover .card-edit-btn { opacity: 1; }
+
+.card-edit-btn:hover {
+  color: var(--green-400);
+  background: var(--bg-elevated);
+  border-color: var(--border-green);
+  transform: none;
+  box-shadow: none;
+}
+
+.card-edit-btn--active {
+  opacity: 1 !important;
+  color: var(--fg-2);
+  background: var(--bg-elevated);
+}
+
+/* ── Card edit form ─────────────────────────────────────────── */
+.card-edit-form {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-edit-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--green-500) 30%, var(--green-300) 50%, var(--green-500) 70%, transparent 100%);
+}
+
+.card-edit-row {
+  display: flex;
+  gap: .75rem;
+}
+
+.card-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  flex: 1;
+}
+
+.card-edit-field label {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.card-edit-field input,
+.card-edit-field select {
+  width: 100%;
+  padding: .55rem .75rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  color: var(--fg-1);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+}
+
+.card-edit-field input:focus,
+.card-edit-field select:focus {
+  border-color: rgba(61,204,130,.5);
+  box-shadow: 0 0 0 3px rgba(61,204,130,.1);
+}
+
+.card-edit-field input::placeholder { color: var(--fg-4); }
+
+.card-edit-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233DCC82' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-color: var(--bg-raised);
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.card-edit-field select option { background: var(--bg-card); color: var(--fg-1); }
+
+.card-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  padding-top: .25rem;
+}
+
+.card-edit-cancel {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  color: var(--fg-3);
+  padding: .45rem 1rem;
+  font-size: .72rem;
+  box-shadow: none;
+}
+
+.card-edit-cancel:hover { color: var(--fg-1); background: var(--bg-raised); transform: none; box-shadow: none; }
+
+.card-edit-save {
+  background: var(--green-500);
+  color: #fff;
+  padding: .45rem 1.2rem;
+  font-size: .72rem;
+  box-shadow: 0 2px 10px rgba(46,173,105,.3);
+}
+
+.card-edit-save:hover { background: var(--green-400); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(46,173,105,.35); }
+
 /* ── Flip card ──────────────────────────────────────────────── */
 .card {
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   width: 100%;
-  max-width: 560px;
   height: 280px;
   perspective: 1200px;
   cursor: pointer;
   position: relative;
-  margin: 0 auto;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .card { cursor: pointer; }
@@ -744,8 +895,8 @@ button:disabled {
 .card-example {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: .85rem;
-  color: var(--fg-3);
+  font-size: 1rem;
+  color: var(--fg-2);
   line-height: 1.5;
   max-width: 90%;
 }
@@ -979,20 +1130,87 @@ button:disabled {
 .language-link-row { display: flex; align-items: center; gap: .4rem; }
 .language-link-row .language-link-card { flex: 1; }
 
-.language-link-remove {
+.language-link-action-btn {
   background: transparent;
   border: none;
-  color: var(--fg-3);
-  font-size: .7rem;
+  color: var(--fg-4);
   padding: .4rem;
   letter-spacing: 0;
   text-transform: none;
   flex-shrink: 0;
   line-height: 1;
   box-shadow: none;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition), background var(--transition);
 }
 
-.language-link-remove:hover { color: var(--diff-again); transform: none; box-shadow: none; }
+.language-link-action-btn:hover {
+  color: var(--green-400);
+  background: rgba(61,204,130,0.08);
+  transform: none;
+  box-shadow: none;
+}
+
+.language-link-remove:hover { color: var(--diff-again) !important; background: rgba(224,85,85,0.08) !important; }
+
+/* ── Link inline edit form ──────────────────────────────────── */
+.language-link-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-green);
+  border-radius: var(--radius-sm);
+  margin-bottom: .25rem;
+}
+
+.language-link-edit-form input {
+  width: 100%;
+  padding: .45rem .75rem;
+  font-family: var(--font-body);
+  font-size: .8rem;
+  color: var(--fg-1);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.language-link-edit-form input:focus { border-color: rgba(61,204,130,.5); }
+.language-link-edit-form input::placeholder { color: var(--fg-3); }
+
+.language-link-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  margin-top: .25rem;
+}
+
+.language-link-edit-cancel {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  color: var(--fg-3);
+  padding: .35rem .9rem;
+  font-size: .72rem;
+  box-shadow: none;
+}
+
+.language-link-edit-cancel:hover { color: var(--fg-1); background: var(--bg-raised); transform: none; box-shadow: none; }
+
+.language-link-edit-save {
+  background: var(--green-500);
+  color: #fff;
+  padding: .35rem .9rem;
+  font-size: .72rem;
+  box-shadow: 0 2px 8px rgba(46,173,105,.25);
+}
+
+.language-link-edit-save:hover { background: var(--green-400); transform: translateY(-1px); }
 
 /* ── Keyframes ──────────────────────────────────────────────── */
 @keyframes fadeUp {

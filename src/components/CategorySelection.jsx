@@ -16,7 +16,7 @@ const item = {
   animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {}, selectedLanguage, languageLinks = [], onAddLink, onRemoveLink }) => {
+const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {}, selectedLanguage, languageLinks = [], onAddLink, onUpdateLink, onRemoveLink }) => {
   return (
     <div className="category-selection">
       <p>Choose a category to study</p>
@@ -62,7 +62,7 @@ const CategorySelection = ({ onSelectCategory, onShowAddCardForm, cardCounts = {
         <button onClick={onShowAddCardForm}>+ Add New Card</button>
       </div>
 
-      <LanguageLinks links={languageLinks} language={selectedLanguage} onAddLink={onAddLink} onRemoveLink={onRemoveLink} />
+      <LanguageLinks links={languageLinks} language={selectedLanguage} onAddLink={onAddLink} onUpdateLink={onUpdateLink} onRemoveLink={onRemoveLink} />
     </div>
   );
 };

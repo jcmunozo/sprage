@@ -42,8 +42,12 @@ function App() {
       const filtered = allCards.filter(
         (c) => c.type === selectedCategory && (!selectedLanguage || c.language === selectedLanguage?.name)
       );
-      setCards([...filtered].sort(() => Math.random() - 0.5));
-      setCurrentCardIndex(0);
+      setCards(prev => {
+        const sameSet = prev.length === filtered.length && filtered.every(c => prev.some(p => p._id === c._id));
+        if (sameSet) return prev.map(c => filtered.find(f => f._id === c._id) || c);
+        setCurrentCardIndex(0);
+        return [...filtered].sort(() => Math.random() - 0.5);
+      });
     }
   }, [selectedCategory, selectedLanguage, allCards]);
 
@@ -73,6 +77,15 @@ function App() {
     }
   };
 
+  const handleUpdateLink = async (id, data) => {
+    try {
+      const updated = await api.links.update(id, data);
+      setAllLinks((prev) => prev.map((l) => l._id === id ? updated : l));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   const handleRemoveLink = async (id) => {
     try {
       await api.links.remove(id);
@@ -91,6 +104,15 @@ function App() {
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
     setShowAddCardForm(false);
+  };
+
+  const handleUpdateCard = async (id, data) => {
+    try {
+      const updated = await api.cards.update(id, data);
+      setAllCards(prev => prev.map(c => c._id === id ? updated : c));
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   const handleNextCard = () => {
@@ -210,7 +232,7 @@ function App() {
                     <p className="card-counter">
                       Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
                     </p>
-                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} />
+                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
                   </>
                 ) : (
                   <div style={{ padding: '3rem 0', textAlign: 'center' }}>
@@ -236,6 +258,7 @@ function App() {
                 selectedLanguage={selectedLanguage}
                 languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
                 onAddLink={handleAddLink}
+                onUpdateLink={handleUpdateLink}
                 onRemoveLink={handleRemoveLink}
               />
             ) : (

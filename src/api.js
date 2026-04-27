@@ -39,6 +39,7 @@ export const api = {
   cards: {
     getAll: () => request('/cards'),
     create: (card) => request('/cards', { method: 'POST', body: JSON.stringify(card) }),
+    update: (id, data) => request(`/cards/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
   },
   progress: {
     getDue: () => request('/progress/due'),
@@ -55,6 +56,7 @@ export const api = {
     getAll: () => request('/links'),
     getByLanguageId: (languageId) => request(`/links?languageId=${encodeURIComponent(languageId)}`),
     create: (link) => request('/links', { method: 'POST', body: JSON.stringify(link) }),
+    update: (id, data) => request(`/links/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
     remove: (id) => request(`/links/${id}`, { method: 'DELETE' }),
   },
 };
