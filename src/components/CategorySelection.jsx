@@ -3,7 +3,7 @@ import LanguageLinks from './LanguageLinks';
 
 const CATEGORIES = [
   { id: 'vocabulary', label: 'Vocabulary', icon: '词', description: 'Words & definitions' },
-  { id: 'idiom',      label: 'Idioms',     icon: '語', description: 'Phrases & expressions' },
+  { id: 'idiom',      label: 'Idioms',     icon: '语', description: 'Phrases & expressions' },
   { id: 'grammar',    label: 'Grammar',    icon: '文', description: 'Rules & structures' },
 ];
 
