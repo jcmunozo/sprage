@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function getToken() {
   return localStorage.getItem('token');
@@ -40,6 +40,13 @@ export const api = {
     getAll: () => request('/cards'),
     create: (card) => request('/cards', { method: 'POST', body: JSON.stringify(card) }),
     update: (id, data) => request(`/cards/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    remove: (id) => request(`/cards/${id}`, { method: 'DELETE' }),
+  },
+  decks: {
+    getAll: () => request('/decks'),
+    create: (data) => request('/decks', { method: 'POST', body: JSON.stringify(data) }),
+    update: (id, data) => request(`/decks/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    remove: (id) => request(`/decks/${id}`, { method: 'DELETE' }),
   },
   progress: {
     getDue: () => request('/progress/due'),

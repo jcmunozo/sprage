@@ -3,7 +3,7 @@ import { useState } from 'react';
 const TYPES       = ['idiom', 'grammar', 'vocabulary'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
 
-const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
+const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType, decks = [] }) => {
   const [type,       setType]       = useState(defaultType || 'vocabulary');
   const [front,      setFront]      = useState('');
   const [back,       setBack]       = useState('');
@@ -11,6 +11,7 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
   const [category,   setCategory]   = useState('');
   const [language,   setLanguage]   = useState(defaultLanguage || 'English');
   const [difficulty, setDifficulty] = useState('intermediate');
+  const [deckId,     setDeckId]     = useState('');
   const [tagsInput,  setTagsInput]  = useState('');
   const [loading,    setLoading]    = useState(false);
 
@@ -22,7 +23,7 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
       .map((t) => t.trim())
       .filter(Boolean);
     setLoading(true);
-    await onAddCard({ type, front, back, example, category, language, difficulty, tags });
+    await onAddCard({ type, front, back, example, category, language, difficulty, tags, ...(deckId ? { deckId } : {}) });
     setLoading(false);
     setFront(''); setBack(''); setExample('');
     setCategory(''); setTagsInput('');
@@ -84,6 +85,19 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType }) => {
             />
           </div>
         </div>
+
+        {/* Row: deck (optional) */}
+        {decks.length > 0 && (
+          <div className="form-group">
+            <label>Deck <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+            <select value={deckId} onChange={(e) => setDeckId(e.target.value)}>
+              <option value="">— No deck —</option>
+              {decks.map(d => (
+                <option key={d._id} value={d._id}>{d.name}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="form-group">
           <label>Front — word or phrase</label>
