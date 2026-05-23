@@ -3,17 +3,26 @@ import { useState } from 'react';
 const TYPES       = ['idiom', 'grammar', 'vocabulary'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
 
-const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType, decks = [] }) => {
+const AddCardForm = ({
+  onAddCard,
+  onCancel,
+  defaultLanguage,
+  defaultType,
+  decks = [],
+  languages = [],
+}) => {
   const [type,       setType]       = useState(defaultType || 'vocabulary');
   const [front,      setFront]      = useState('');
   const [back,       setBack]       = useState('');
   const [example,    setExample]    = useState('');
   const [category,   setCategory]   = useState('');
-  const [language,   setLanguage]   = useState(defaultLanguage || 'English');
+  const [languageId, setLanguageId] = useState(defaultLanguage?._id || '');
   const [difficulty, setDifficulty] = useState('intermediate');
   const [deckId,     setDeckId]     = useState('');
   const [tagsInput,  setTagsInput]  = useState('');
   const [loading,    setLoading]    = useState(false);
+
+  const lockedLanguage = !!defaultLanguage;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +32,17 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType, decks 
       .map((t) => t.trim())
       .filter(Boolean);
     setLoading(true);
-    await onAddCard({ type, front, back, example, category, language, difficulty, tags, ...(deckId ? { deckId } : {}) });
+    await onAddCard({
+      type,
+      front,
+      back,
+      example,
+      category,
+      difficulty,
+      tags,
+      ...(languageId ? { languageId } : {}),
+      ...(deckId ? { deckId } : {}),
+    });
     setLoading(false);
     setFront(''); setBack(''); setExample('');
     setCategory(''); setTagsInput('');
@@ -68,12 +87,21 @@ const AddCardForm = ({ onAddCard, onCancel, defaultLanguage, defaultType, decks 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
           <div className="form-group">
             <label>Language</label>
-            <input
-              type="text"
-              value={language}
-              readOnly
-              style={{ opacity: 0.6, cursor: 'not-allowed' }}
-            />
+            {lockedLanguage ? (
+              <input
+                type="text"
+                value={defaultLanguage.name}
+                readOnly
+                style={{ opacity: 0.6, cursor: 'not-allowed' }}
+              />
+            ) : (
+              <select value={languageId} onChange={(e) => setLanguageId(e.target.value)}>
+                <option value="">— None —</option>
+                {languages.map((l) => (
+                  <option key={l._id} value={l._id}>{l.name}</option>
+                ))}
+              </select>
+            )}
           </div>
           <div className="form-group">
             <label>Category</label>

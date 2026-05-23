@@ -64,7 +64,8 @@ function App() {
   useEffect(() => {
     if (selectedCategory) {
       const filtered = allCards.filter(
-        (c) => c.type === selectedCategory && (!selectedLanguage || c.language === selectedLanguage?.name)
+        (c) => c.type === selectedCategory
+          && (!selectedLanguage || String(c.languageId) === String(selectedLanguage._id))
       );
       setCards(prev => {
         const sameSet = prev.length === filtered.length && filtered.every(c => prev.some(p => p._id === c._id));
@@ -222,6 +223,12 @@ function App() {
     }
   };
 
+  const cardsCountByLanguage = (langId) =>
+    allCards.filter((c) => String(c.languageId) === String(langId)).length;
+
+  const cardsCountByLanguageAndType = (langId, type) =>
+    allCards.filter((c) => c.type === type && String(c.languageId) === String(langId)).length;
+
   const goHome = () => {
     setSelectedLanguage(null);
     setSelectedCategory(null);
@@ -341,9 +348,10 @@ function App() {
               <AddCardForm
                 onAddCard={handleAddCard}
                 onCancel={() => setShowAddCardForm(false)}
-                defaultLanguage={selectedLanguage?.name}
+                defaultLanguage={selectedLanguage}
                 defaultType={addCardDefaultType}
                 decks={allDecks}
+                languages={allLanguages}
               />
             ) : showAddLanguageForm ? (
               <AddLanguageForm
@@ -418,9 +426,9 @@ function App() {
                 onSelectCategory={handleSelectCategory}
                 onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
                 cardCounts={{
-                  idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
-                  grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
-                  vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
+                  idiom: cardsCountByLanguageAndType(selectedLanguage._id, 'idiom'),
+                  grammar: cardsCountByLanguageAndType(selectedLanguage._id, 'grammar'),
+                  vocabulary: cardsCountByLanguageAndType(selectedLanguage._id, 'vocabulary'),
                 }}
                 selectedLanguage={selectedLanguage}
                 languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
@@ -432,7 +440,7 @@ function App() {
               <LanguageSelection
                 languages={allLanguages}
                 cardCounts={allLanguages.reduce((acc, lang) => {
-                  acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
+                  acc[lang._id] = cardsCountByLanguage(lang._id);
                   return acc;
                 }, {})}
                 onSelectLanguage={handleSelectLanguage}
