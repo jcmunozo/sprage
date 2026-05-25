@@ -1,29 +1,39 @@
 import { motion } from 'framer-motion';
+import { listContainer, listItem } from '../lib/motion';
 
 const LANG_COLORS = [
-  '#3DCC82', '#4DA8E8', '#D4883A', '#E05555', '#C97CE8', '#FFB38A',
-  '#52A97B', '#86D4A8', '#F07644', '#B8BDB4',
+  '#4FD18E', '#6EB6E8', '#E89968', '#E06A6A', '#C58FE0', '#F2B98C',
+  '#5CB683', '#8DD9AC', '#D77C46', '#BFC2B6',
 ];
 
 const DECK_COLORS = [
-  '#C97CE8', '#4DA8E8', '#FFB38A', '#3DCC82', '#E05555', '#D4883A',
-  '#86D4A8', '#52A97B', '#B8BDB4', '#F07644',
+  '#C58FE0', '#6EB6E8', '#F2B98C', '#4FD18E', '#E06A6A', '#D89344',
+  '#8DD9AC', '#5CB683', '#BFC2B6', '#D77C46',
 ];
 
-const container = {
-  animate: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
-};
-
-const item = {
-  initial: { opacity: 0, y: 18, scale: 0.95 },
-  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] } },
-};
+const Tile = ({ color, code, name, description, count, onClick, ariaLabel }) => (
+  <button
+    type="button"
+    className="tile"
+    onClick={onClick}
+    style={{ '--tile-color': color }}
+    aria-label={ariaLabel || name}
+  >
+    <span className="lang-code">{code}</span>
+    <span className="tile-label">{name}</span>
+    {description && <span className="tile-sublabel">{description}</span>}
+    {count > 0 && (
+      <span className="tile-count">
+        {count} {count === 1 ? 'card' : 'cards'}
+      </span>
+    )}
+  </button>
+);
 
 const LanguageSelection = ({
   languages,
   cardCounts = {},
   onSelectLanguage,
-  onShowAddCardForm,
   onShowAddLanguageForm,
   onShowAddDeckForm,
   decks = [],
@@ -33,57 +43,41 @@ const LanguageSelection = ({
   dueTotal = 0,
   onStudyDue,
 }) => {
+  const hasIntroAbove = decks.length > 0 || dueTotal > 0;
+
   return (
     <div className="category-selection">
-
-      {/* ── Study Due button ── */}
       {dueTotal > 0 && (
         <motion.div
+          className="study-due-cta"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          style={{ marginBottom: '1.75rem' }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <button
-            onClick={onStudyDue}
-            style={{
-              background: 'linear-gradient(135deg, rgba(61,204,130,.14), rgba(77,168,232,.1))',
-              border: '1px solid rgba(61,204,130,.35)',
-              color: '#3DCC82',
-              padding: '.55rem 1.4rem',
-              borderRadius: '8px',
-              fontWeight: 600,
-              fontSize: '.82rem',
-              letterSpacing: '.04em',
-              cursor: 'pointer',
-            }}
-          >
+          <button className="study-due-pill" onClick={onStudyDue}>
             Study Due — {dueTotal} {dueTotal === 1 ? 'card' : 'cards'}
           </button>
         </motion.div>
       )}
 
-      {/* ── Languages section ── */}
-      <p style={{ marginBottom: '.75rem' }}>
-        {decks.length > 0 || dueTotal > 0 ? 'Languages' : 'Choose a language to study'}
+      <p className="section-eyebrow">
+        {hasIntroAbove ? 'Languages' : 'Choose a language to study'}
       </p>
 
       {languages.length === 0 ? (
         <motion.div
-          style={{ padding: '1.5rem 0' }}
+          className="empty-state empty-state--inline"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.35 }}
         >
           <p>No languages yet. Add one to get started.</p>
-          <button style={{ marginTop: '1rem' }} onClick={onShowAddLanguageForm}>
-            + Add Language
-          </button>
+          <button onClick={onShowAddLanguageForm}>+ Add Language</button>
         </motion.div>
       ) : (
         <motion.div
-          className="category-buttons"
-          variants={container}
+          className="tile-grid"
+          variants={listContainer}
           initial="initial"
           animate="animate"
         >
@@ -91,39 +85,15 @@ const LanguageSelection = ({
             const color = LANG_COLORS[i % LANG_COLORS.length];
             const code = lang.code ? lang.code.toUpperCase() : lang.name.slice(0, 2).toUpperCase();
             return (
-              <motion.button
-                key={lang._id}
-                className="category-btn"
-                variants={item}
-                onClick={() => onSelectLanguage(lang)}
-                style={{ '--lang-color': color }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = `${color}55`;
-                  e.currentTarget.style.boxShadow = `0 8px 32px ${color}22`;
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                  e.currentTarget.style.boxShadow = '';
-                }}
-              >
-                <span className="lang-code" style={{ color }}>{code}</span>
-                <span style={{ display: 'block', marginBottom: '.3rem', color: 'var(--fg-2)' }}>{lang.name}</span>
-                {cardCounts[lang._id] > 0 && (
-                  <span style={{
-                    display: 'inline-block',
-                    marginTop: '.3rem',
-                    fontSize: '.6rem',
-                    color,
-                    border: `1px solid ${color}44`,
-                    borderRadius: '999px',
-                    padding: '2px 8px',
-                    letterSpacing: '.08em',
-                    background: `${color}14`,
-                  }}>
-                    {cardCounts[lang._id]} cards
-                  </span>
-                )}
-              </motion.button>
+              <motion.div key={lang._id} className="tile-wrapper" variants={listItem}>
+                <Tile
+                  color={color}
+                  code={code}
+                  name={lang.name}
+                  count={cardCounts[lang._id] || 0}
+                  onClick={() => onSelectLanguage(lang)}
+                />
+              </motion.div>
             );
           })}
         </motion.div>
@@ -135,22 +105,18 @@ const LanguageSelection = ({
         </div>
       )}
 
-      {/* ── My Decks section ── */}
-      <div style={{ marginTop: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '.75rem' }}>
-          <p style={{ margin: 0 }}>My Decks</p>
-          <button
-            onClick={onShowAddDeckForm}
-            style={{ fontSize: '.7rem', padding: '.2rem .7rem', borderRadius: '6px' }}
-          >
+      <div className="section">
+        <div className="section-header">
+          <p>My Decks</p>
+          <button className="section-header-action" onClick={onShowAddDeckForm}>
             + New Deck
           </button>
         </div>
 
         {decks.length > 0 ? (
           <motion.div
-            className="category-buttons"
-            variants={container}
+            className="tile-grid"
+            variants={listContainer}
             initial="initial"
             animate="animate"
           >
@@ -158,63 +124,21 @@ const LanguageSelection = ({
               const color = DECK_COLORS[i % DECK_COLORS.length];
               const initials = deck.name.slice(0, 2).toUpperCase();
               return (
-                <motion.div
-                  key={deck._id}
-                  variants={item}
-                  style={{ position: 'relative' }}
-                >
-                  <button
-                    className="category-btn"
+                <motion.div key={deck._id} className="tile-wrapper" variants={listItem}>
+                  <Tile
+                    color={color}
+                    code={initials}
+                    name={deck.name}
+                    description={deck.description}
+                    count={deckCardCounts[deck._id] || 0}
                     onClick={() => onSelectDeck(deck)}
-                    style={{ '--lang-color': color, width: '100%' }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = `${color}55`;
-                      e.currentTarget.style.boxShadow = `0 8px 32px ${color}22`;
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                      e.currentTarget.style.boxShadow = '';
-                    }}
-                  >
-                    <span className="lang-code" style={{ color }}>{initials}</span>
-                    <span style={{ display: 'block', marginBottom: '.3rem', color: 'var(--fg-2)' }}>{deck.name}</span>
-                    {deck.description && (
-                      <span style={{ display: 'block', fontSize: '.6rem', color: 'var(--fg-3)', marginBottom: '.3rem' }}>
-                        {deck.description}
-                      </span>
-                    )}
-                    {deckCardCounts[deck._id] > 0 && (
-                      <span style={{
-                        display: 'inline-block',
-                        marginTop: '.3rem',
-                        fontSize: '.6rem',
-                        color,
-                        border: `1px solid ${color}44`,
-                        borderRadius: '999px',
-                        padding: '2px 8px',
-                        letterSpacing: '.08em',
-                        background: `${color}14`,
-                      }}>
-                        {deckCardCounts[deck._id]} cards
-                      </span>
-                    )}
-                  </button>
+                  />
                   <button
-                    onClick={() => onRemoveDeck(deck._id)}
+                    type="button"
+                    className="tile-delete"
+                    onClick={(e) => { e.stopPropagation(); onRemoveDeck(deck._id); }}
                     title="Delete deck"
-                    style={{
-                      position: 'absolute',
-                      top: '8px',
-                      right: '8px',
-                      background: 'none',
-                      border: 'none',
-                      padding: '3px 6px',
-                      cursor: 'pointer',
-                      color: 'var(--fg-3)',
-                      fontSize: '10px',
-                      borderRadius: '4px',
-                      lineHeight: 1,
-                    }}
+                    aria-label={`Delete deck ${deck.name}`}
                   >
                     ✕
                   </button>
@@ -223,7 +147,7 @@ const LanguageSelection = ({
             })}
           </motion.div>
         ) : (
-          <p style={{ fontSize: '.75rem', color: 'var(--fg-3)', marginTop: '.25rem' }}>
+          <p className="language-links-empty" style={{ textAlign: 'center' }}>
             No decks yet. Create one to organize your cards.
           </p>
         )}

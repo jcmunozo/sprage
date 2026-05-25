@@ -10,6 +10,7 @@ const AddCardForm = ({
   defaultType,
   decks = [],
   languages = [],
+  existingCards = [],
 }) => {
   const [type,       setType]       = useState(defaultType || 'vocabulary');
   const [front,      setFront]      = useState('');
@@ -23,6 +24,26 @@ const AddCardForm = ({
   const [loading,    setLoading]    = useState(false);
 
   const lockedLanguage = !!defaultLanguage;
+
+  // Live duplicate check: while typing the front, surface existing cards in the
+  // same language whose front/back matches, so the user avoids creating a dupe.
+  const frontQuery = front.trim().toLowerCase();
+  const duplicateMatches =
+    frontQuery.length >= 2
+      ? existingCards
+          .filter((c) => {
+            const sameLanguage = !languageId || String(c.languageId) === String(languageId);
+            if (!sameLanguage) return false;
+            return (
+              c.front?.toLowerCase().includes(frontQuery) ||
+              c.back?.toLowerCase().includes(frontQuery)
+            );
+          })
+          .slice(0, 6)
+      : [];
+  const hasExactDuplicate = duplicateMatches.some(
+    (c) => c.front?.trim().toLowerCase() === frontQuery,
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,8 +75,7 @@ const AddCardForm = ({
       <div className="gold-divider" />
 
       <form onSubmit={handleSubmit}>
-        {/* Row: type + difficulty */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="form-row">
           <div className="form-group">
             <label>Type</label>
             {defaultType ? (
@@ -63,7 +83,6 @@ const AddCardForm = ({
                 type="text"
                 value={type.charAt(0).toUpperCase() + type.slice(1)}
                 readOnly
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
               />
             ) : (
               <select value={type} onChange={(e) => setType(e.target.value)}>
@@ -83,17 +102,11 @@ const AddCardForm = ({
           </div>
         </div>
 
-        {/* Row: language + category */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div className="form-row">
           <div className="form-group">
             <label>Language</label>
             {lockedLanguage ? (
-              <input
-                type="text"
-                value={defaultLanguage.name}
-                readOnly
-                style={{ opacity: 0.6, cursor: 'not-allowed' }}
-              />
+              <input type="text" value={defaultLanguage.name} readOnly />
             ) : (
               <select value={languageId} onChange={(e) => setLanguageId(e.target.value)}>
                 <option value="">— None —</option>
@@ -114,10 +127,9 @@ const AddCardForm = ({
           </div>
         </div>
 
-        {/* Row: deck (optional) */}
         {decks.length > 0 && (
           <div className="form-group">
-            <label>Deck <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+            <label>Deck <span className="field-hint">(optional)</span></label>
             <select value={deckId} onChange={(e) => setDeckId(e.target.value)}>
               <option value="">— No deck —</option>
               {decks.map(d => (
@@ -136,6 +148,22 @@ const AddCardForm = ({
             placeholder="e.g. Serendipity"
             required
           />
+          {duplicateMatches.length > 0 && (
+            <div className={`dup-warning${hasExactDuplicate ? ' dup-warning--exact' : ''}`}>
+              <p className="dup-warning-title">
+                {hasExactDuplicate
+                  ? 'A card with this front already exists in this language:'
+                  : 'Similar cards already exist in this language:'}
+              </p>
+              <ul>
+                {duplicateMatches.map((c) => (
+                  <li key={c._id}>
+                    <strong>{c.front}</strong> — {c.back}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="form-group">
@@ -150,7 +178,7 @@ const AddCardForm = ({
         </div>
 
         <div className="form-group">
-          <label>Example sentence <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+          <label>Example sentence <span className="field-hint">(optional)</span></label>
           <input
             type="text"
             value={example}
@@ -160,7 +188,7 @@ const AddCardForm = ({
         </div>
 
         <div className="form-group">
-          <label>Tags <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(comma-separated, optional)</span></label>
+          <label>Tags <span className="field-hint">(comma-separated, optional)</span></label>
           <input
             type="text"
             value={tagsInput}

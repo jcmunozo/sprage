@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../api';
+import { cardEntrance, actionSwap, softFade } from '../lib/motion';
 
 const QUALITY_BUTTONS = [
   { label: 'Again', sublabel: 'Forgot it',  quality: 1, cls: 'btn-again' },
@@ -76,11 +77,7 @@ const Card = ({ card, onNext, onUpdate }) => {
   const actionsKey = isEditing ? 'edit' : isFlipped ? 'quality' : 'hint';
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96, y: 10 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <motion.div {...cardEntrance}>
       {/* ── Card + edit button wrapper ── */}
       <div className="card-wrapper">
         <div
@@ -138,10 +135,7 @@ const Card = ({ card, onNext, onUpdate }) => {
               key="edit"
               className="card-edit-form"
               onSubmit={handleSave}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              {...actionSwap}
             >
               <div className="card-edit-row">
                 <div className="card-edit-field">
@@ -167,8 +161,8 @@ const Card = ({ card, onNext, onUpdate }) => {
                 </div>
               </div>
               <div className="card-edit-row">
-                <div className="card-edit-field" style={{ flex: 2 }}>
-                  <label>Example <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+                <div className="card-edit-field card-edit-field--wide">
+                  <label>Example <span className="field-hint">(optional)</span></label>
                   <input
                     type="text"
                     value={example}
@@ -176,7 +170,7 @@ const Card = ({ card, onNext, onUpdate }) => {
                     placeholder="Example sentence"
                   />
                 </div>
-                <div className="card-edit-field" style={{ flex: 1 }}>
+                <div className="card-edit-field">
                   <label>Difficulty</label>
                   <select value={difficulty} onChange={e => setDifficulty(e.target.value)}>
                     {DIFFICULTIES.map(d => (
@@ -195,14 +189,7 @@ const Card = ({ card, onNext, onUpdate }) => {
               </div>
             </motion.form>
           ) : actionsKey === 'quality' ? (
-            <motion.div
-              key="quality"
-              className="quality-buttons"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <motion.div key="quality" className="quality-buttons" {...actionSwap}>
               {QUALITY_BUTTONS.map(({ label, sublabel, quality, cls }) => (
                 <button
                   key={quality}
@@ -211,21 +198,12 @@ const Card = ({ card, onNext, onUpdate }) => {
                   disabled={submitting}
                 >
                   <span className="quality-label">{label}</span>
-                  <span style={{ fontSize: '.62rem', opacity: .8, fontWeight: 400, letterSpacing: '.04em', textTransform: 'none' }}>
-                    {sublabel}
-                  </span>
+                  <span className="quality-sublabel">{sublabel}</span>
                 </button>
               ))}
             </motion.div>
           ) : (
-            <motion.span
-              key="hint"
-              className="flip-prompt"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-            >
+            <motion.span key="hint" className="flip-prompt" {...softFade}>
               Tap to reveal
             </motion.span>
           )}

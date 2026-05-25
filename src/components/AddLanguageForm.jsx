@@ -29,7 +29,7 @@ const AddLanguageForm = ({ onAdd, onCancel }) => {
           />
         </div>
         <div className="form-group">
-          <label>Code <span style={{ color: 'var(--fg-3)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+          <label>Code <span className="field-hint">(optional)</span></label>
           <input
             type="text"
             value={code}
