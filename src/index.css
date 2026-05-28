@@ -658,13 +658,15 @@ button:disabled {
 /* ── Tile grid (languages / categories / decks) ─────────────── */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
+  justify-content: center;
   gap: var(--space-3);
   margin-top: var(--space-6);
 }
 
 .tile-wrapper {
   position: relative;
+  display: flex;
 }
 
 /* ── Tile (base card-like button) ───────────────────────────── */
@@ -1574,7 +1576,7 @@ button:disabled {
   .btn-quality { padding: 12px 4px; min-width: 60px; font-size: 0.68rem; }
   .auth-form { padding: 2rem 1.5rem; }
   .add-card-form { padding: 2rem 1.25rem; margin: 24px 16px; }
-  .tile-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .tile-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 160px)); }
   .form-row { grid-template-columns: 1fr; gap: 0; }
 }
 
