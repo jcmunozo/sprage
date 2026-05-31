@@ -141,7 +141,7 @@ const LanguageLinks = ({ links = [], language, onAddLink, onUpdateLink, onRemove
           onClick={() => setShowForm((v) => !v)}
           title={showForm ? 'Cancel' : 'Add resource'}
         >
-          {showForm ? '✕' : '+'}
+          <span aria-hidden="true">{showForm ? '×' : '+'}</span>
         </button>
       </div>
 
