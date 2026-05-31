@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import { api } from './api';
+import { pageTransition, screenIn } from './lib/motion';
 import AuthForm from './components/AuthForm';
 import LanguageSelection from './components/LanguageSelection';
 import CategorySelection from './components/CategorySelection';
@@ -64,7 +65,8 @@ function App() {
   useEffect(() => {
     if (selectedCategory) {
       const filtered = allCards.filter(
-        (c) => c.type === selectedCategory && (!selectedLanguage || c.language === selectedLanguage?.name)
+        (c) => c.type === selectedCategory
+          && (!selectedLanguage || String(c.languageId) === String(selectedLanguage._id))
       );
       setCards(prev => {
         const sameSet = prev.length === filtered.length && filtered.every(c => prev.some(p => p._id === c._id));
@@ -222,6 +224,12 @@ function App() {
     }
   };
 
+  const cardsCountByLanguage = (langId) =>
+    allCards.filter((c) => String(c.languageId) === String(langId)).length;
+
+  const cardsCountByLanguageAndType = (langId, type) =>
+    allCards.filter((c) => c.type === type && String(c.languageId) === String(langId)).length;
+
   const goHome = () => {
     setSelectedLanguage(null);
     setSelectedCategory(null);
@@ -234,12 +242,7 @@ function App() {
 
   if (!user) {
     return (
-      <motion.div
-        className="auth-screen"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <motion.div className="auth-screen" {...screenIn}>
         <h1>Sprage</h1>
         <p>Master languages through intelligent repetition</p>
         <AuthForm onAuth={handleAuth} />
@@ -319,19 +322,13 @@ function App() {
         </nav>
       )}
 
-      <main style={{ flex: 1 }}>
+      <main className="app-main">
         {error && (
-          <p className="error-msg" style={{ maxWidth: 540, margin: '1rem auto', padding: '0 32px' }}>{error}</p>
+          <p className="error-msg app-error">{error}</p>
         )}
 
         <AnimatePresence mode="wait">
-          <motion.div
-            key={viewKey}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <motion.div key={viewKey} {...pageTransition}>
             {loadingCards ? (
               <div className="loading">
                 <div className="loading-dots"><span /><span /><span /></div>
@@ -341,9 +338,11 @@ function App() {
               <AddCardForm
                 onAddCard={handleAddCard}
                 onCancel={() => setShowAddCardForm(false)}
-                defaultLanguage={selectedLanguage?.name}
+                defaultLanguage={selectedLanguage}
                 defaultType={addCardDefaultType}
                 decks={allDecks}
+                languages={allLanguages}
+                existingCards={allCards}
               />
             ) : showAddLanguageForm ? (
               <AddLanguageForm
@@ -365,9 +364,9 @@ function App() {
                     <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
                   </>
                 ) : (
-                  <div style={{ padding: '3rem 0', textAlign: 'center' }}>
+                  <div className="empty-state">
                     <p>No cards due for review right now.</p>
-                    <button style={{ marginTop: '1rem' }} onClick={goHome}>Back to Home</button>
+                    <button onClick={goHome}>Back to Home</button>
                   </div>
                 )}
               </div>
@@ -381,10 +380,9 @@ function App() {
                     <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
                   </>
                 ) : (
-                  <div style={{ padding: '3rem 0', textAlign: 'center' }}>
+                  <div className="empty-state">
                     <p>No cards in this deck yet.</p>
                     <button
-                      style={{ marginTop: '1rem' }}
                       onClick={() => { setSelectedDeck(null); setShowAddCardForm(true); }}
                     >
                       Add your first card
@@ -402,10 +400,9 @@ function App() {
                     <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
                   </>
                 ) : (
-                  <div style={{ padding: '3rem 0', textAlign: 'center' }}>
+                  <div className="empty-state">
                     <p>No cards in this category yet.</p>
                     <button
-                      style={{ marginTop: '1rem' }}
                       onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
                     >
                       Add your first card
@@ -418,10 +415,13 @@ function App() {
                 onSelectCategory={handleSelectCategory}
                 onShowAddCardForm={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
                 cardCounts={{
-                  idiom: allCards.filter(c => c.type === 'idiom' && c.language === selectedLanguage?.name).length,
-                  grammar: allCards.filter(c => c.type === 'grammar' && c.language === selectedLanguage?.name).length,
-                  vocabulary: allCards.filter(c => c.type === 'vocabulary' && c.language === selectedLanguage?.name).length,
+                  idiom: cardsCountByLanguageAndType(selectedLanguage._id, 'idiom'),
+                  grammar: cardsCountByLanguageAndType(selectedLanguage._id, 'grammar'),
+                  vocabulary: cardsCountByLanguageAndType(selectedLanguage._id, 'vocabulary'),
                 }}
+                cards={allCards.filter(
+                  (c) => String(c.languageId) === String(selectedLanguage._id),
+                )}
                 selectedLanguage={selectedLanguage}
                 languageLinks={allLinks.filter(l => l.languageId?._id === selectedLanguage?._id)}
                 onAddLink={handleAddLink}
@@ -432,7 +432,7 @@ function App() {
               <LanguageSelection
                 languages={allLanguages}
                 cardCounts={allLanguages.reduce((acc, lang) => {
-                  acc[lang._id] = allCards.filter(c => c.language === lang.name).length;
+                  acc[lang._id] = cardsCountByLanguage(lang._id);
                   return acc;
                 }, {})}
                 onSelectLanguage={handleSelectLanguage}

@@ -6,6 +6,7 @@ const AuthForm = ({ onAuth }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [registrationCode, setRegistrationCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +18,7 @@ const AuthForm = ({ onAuth }) => {
       const data =
         mode === 'login'
           ? await api.auth.login(email, password)
-          : await api.auth.register(email, password, username);
+          : await api.auth.register(email, password, username, registrationCode);
       localStorage.setItem('token', data.access_token);
       onAuth(data.user);
     } catch (err) {
@@ -49,6 +50,12 @@ const AuthForm = ({ onAuth }) => {
           <label>Password</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
         </div>
+        {mode === 'register' && (
+          <div className="form-group">
+            <label>Invitation code</label>
+            <input type="text" value={registrationCode} onChange={(e) => setRegistrationCode(e.target.value)} placeholder="Code you were given" required />
+          </div>
+        )}
 
         {error && <p className="error-msg">{error}</p>}
 

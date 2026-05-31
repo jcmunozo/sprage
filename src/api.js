@@ -33,11 +33,14 @@ export const api = {
   auth: {
     login: (email, password) =>
       request('/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) }),
-    register: (email, password, username) =>
-      request('/auth/register', { method: 'POST', body: JSON.stringify({ email, password, username }) }),
+    register: (email, password, username, registrationCode) =>
+      request('/auth/register', {
+        method: 'POST',
+        body: JSON.stringify({ email, password, username, registrationCode }),
+      }),
   },
   cards: {
-    getAll: () => request('/cards'),
+    getAll: (q) => request(q ? `/cards?q=${encodeURIComponent(q)}` : '/cards'),
     create: (card) => request('/cards', { method: 'POST', body: JSON.stringify(card) }),
     update: (id, data) => request(`/cards/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
     remove: (id) => request(`/cards/${id}`, { method: 'DELETE' }),
