@@ -113,7 +113,7 @@
 
 /* ── Reset & base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
@@ -127,6 +127,7 @@ body {
   background-attachment: fixed;
   color: var(--fg-1);
   min-height: 100vh;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -397,7 +398,8 @@ button:disabled {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1100px;
+  width: min(1100px, 100%);
+  max-width: 100%;
   height: 540px;
   background: radial-gradient(
     ellipse at 50% 32%,
@@ -697,8 +699,8 @@ button:disabled {
 
 /* ── Tile grid (languages / categories / decks) ─────────────── */
 .tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-3);
   margin-top: var(--space-6);
@@ -707,6 +709,8 @@ button:disabled {
 .tile-wrapper {
   position: relative;
   display: flex;
+  flex: 0 1 180px;
+  min-width: 150px;
 }
 
 /* ── Tile (base card-like button) ───────────────────────────── */
@@ -1706,6 +1710,8 @@ button:disabled {
 .language-link-confirm-text {
   font-size: 0.8rem;
   color: var(--fg-1);
+  flex: 1;
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1913,7 +1919,7 @@ button:disabled {
   .btn-quality { padding: 12px 4px; min-width: 60px; font-size: 0.68rem; }
   .auth-form { padding: 2rem 1.5rem; }
   .add-card-form { padding: 2rem 1.25rem; margin: 24px 16px; }
-  .tile-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 160px)); }
+  .tile-wrapper { flex-basis: 160px; min-width: 130px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .home-hero {
     flex-direction: column;
