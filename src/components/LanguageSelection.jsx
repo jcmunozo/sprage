@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { listContainer, listItem } from '../lib/motion';
+import ConfirmDialog from './ConfirmDialog';
 
 const LANG_COLORS = [
   '#4FD18E', '#6EB6E8', '#E89968', '#E06A6A', '#C58FE0', '#F2B98C',
@@ -43,21 +45,62 @@ const LanguageSelection = ({
   dueTotal = 0,
   onStudyDue,
 }) => {
+  const [deckToDelete, setDeckToDelete] = useState(null);
+  const totalCards = Object.values(cardCounts).reduce((sum, n) => sum + n, 0);
   const hasIntroAbove = decks.length > 0 || dueTotal > 0;
+  const deckToDeleteCount = deckToDelete ? deckCardCounts[deckToDelete._id] || 0 : 0;
 
   return (
     <div className="category-selection">
-      {dueTotal > 0 && (
+      {dueTotal > 0 ? (
         <motion.div
-          className="study-due-cta"
-          initial={{ opacity: 0, y: -8 }}
+          className="home-hero"
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <button className="study-due-pill" onClick={onStudyDue}>
-            Study Due — {dueTotal} {dueTotal === 1 ? 'card' : 'cards'}
+          <div className="home-hero-text">
+            <p className="home-hero-eyebrow">Ready for review</p>
+            <h2 className="home-hero-title">
+              {dueTotal} {dueTotal === 1 ? 'card is' : 'cards are'} due today
+            </h2>
+            <p className="home-hero-sub">
+              A few minutes now keeps them in long-term memory.
+            </p>
+          </div>
+          <button className="home-hero-btn" onClick={onStudyDue}>
+            Start review
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </motion.div>
+      ) : totalCards > 0 ? (
+        <motion.p
+          className="home-caught-up"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.35 }}
+        >
+          <span aria-hidden="true">✓</span> All caught up — nothing due for review
+        </motion.p>
+      ) : null}
+
+      {(totalCards > 0 || languages.length > 0) && (
+        <div className="home-stats">
+          <div className="home-stat">
+            <span className="home-stat-num">{totalCards}</span>
+            <span className="home-stat-label">{totalCards === 1 ? 'Card' : 'Cards'}</span>
+          </div>
+          <div className="home-stat">
+            <span className="home-stat-num">{languages.length}</span>
+            <span className="home-stat-label">{languages.length === 1 ? 'Language' : 'Languages'}</span>
+          </div>
+          <div className="home-stat">
+            <span className="home-stat-num">{dueTotal}</span>
+            <span className="home-stat-label">Due today</span>
+          </div>
+        </div>
       )}
 
       <p className="section-eyebrow">
@@ -136,7 +179,7 @@ const LanguageSelection = ({
                   <button
                     type="button"
                     className="tile-delete"
-                    onClick={(e) => { e.stopPropagation(); onRemoveDeck(deck._id); }}
+                    onClick={(e) => { e.stopPropagation(); setDeckToDelete(deck); }}
                     title="Delete deck"
                     aria-label={`Delete deck ${deck.name}`}
                   >
@@ -152,6 +195,25 @@ const LanguageSelection = ({
           </p>
         )}
       </div>
+
+      <AnimatePresence>
+        {deckToDelete && (
+          <ConfirmDialog
+            title="Delete deck?"
+            message={
+              deckToDeleteCount > 0
+                ? `“${deckToDelete.name}” and its ${deckToDeleteCount} ${deckToDeleteCount === 1 ? 'card' : 'cards'} will be permanently deleted, along with their review progress.`
+                : `“${deckToDelete.name}” will be permanently deleted.`
+            }
+            confirmLabel="Delete deck"
+            onCancel={() => setDeckToDelete(null)}
+            onConfirm={async () => {
+              await onRemoveDeck(deckToDelete._id);
+              setDeckToDelete(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

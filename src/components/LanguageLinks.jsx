@@ -1,11 +1,31 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const toHref = (url) => (url.startsWith('http') ? url : `https://${url}`);
+
+// The backend stores `description`; the UI treats it as the link's name.
+// Fall back to the domain when no name was given.
+const displayName = (item) => {
+  if (item.description?.trim()) return item.description.trim();
+  try {
+    return new URL(toHref(item.url)).hostname.replace(/^www\./, '');
+  } catch {
+    return item.url;
+  }
+};
+
 const LinkRow = ({ item, onUpdate, onRemove }) => {
   const [editing, setEditing] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [url, setUrl] = useState(item.url);
   const [description, setDescription] = useState(item.description || '');
   const [loading, setLoading] = useState(false);
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    await onRemove(item._id);
+  };
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -43,17 +63,17 @@ const LinkRow = ({ item, onUpdate, onRemove }) => {
           >
             <input
               type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="URL"
-              required
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Name  (e.g. Grammar course)"
               autoFocus
             />
             <input
               type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description (optional)"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="URL"
+              required
             />
             <div className="language-link-edit-actions">
               <button type="button" className="language-link-edit-cancel" onClick={handleCancel}>
@@ -64,6 +84,37 @@ const LinkRow = ({ item, onUpdate, onRemove }) => {
               </button>
             </div>
           </motion.form>
+        ) : confirming ? (
+          <motion.div
+            key="confirm"
+            className="language-link-confirm"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="language-link-confirm-text">
+              Delete “{displayName(item)}”?
+            </span>
+            <div className="language-link-confirm-actions">
+              <button
+                type="button"
+                className="language-link-edit-cancel"
+                onClick={() => setConfirming(false)}
+                disabled={deleting}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="language-link-delete-confirm"
+                onClick={handleDelete}
+                disabled={deleting}
+              >
+                {deleting ? 'Deleting…' : 'Delete'}
+              </button>
+            </div>
+          </motion.div>
         ) : (
           <motion.div
             key="view"
@@ -74,15 +125,17 @@ const LinkRow = ({ item, onUpdate, onRemove }) => {
             transition={{ duration: 0.15 }}
           >
             <a
-              href={item.url.startsWith('http') ? item.url : `https://${item.url}`}
+              href={toHref(item.url)}
               target="_blank"
               rel="noopener noreferrer"
               className="language-link-card"
+              title={item.url}
             >
-              <span className="language-link-url">{item.url}</span>
-              {item.description && (
-                <span className="language-link-desc">{item.description}</span>
-              )}
+              <svg className="language-link-globe" width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2"/>
+                <path d="M1.5 7h11M7 1.5c-3.2 3.4-3.2 7.6 0 11M7 1.5c3.2 3.4 3.2 7.6 0 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+              </svg>
+              <span className="language-link-name">{displayName(item)}</span>
               <svg className="language-link-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -99,7 +152,7 @@ const LinkRow = ({ item, onUpdate, onRemove }) => {
             {onRemove && (
               <button
                 className="language-link-action-btn language-link-remove"
-                onClick={() => onRemove(item._id)}
+                onClick={() => setConfirming(true)}
                 title="Remove"
               >
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -158,16 +211,16 @@ const LanguageLinks = ({ links = [], language, onAddLink, onUpdateLink, onRemove
           >
             <input
               type="text"
+              placeholder="Name  (e.g. Grammar course)"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+              type="text"
               placeholder="URL  (e.g. youtube.com/...)"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               required
-            />
-            <input
-              type="text"
-              placeholder="Description (optional)"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
             />
             <button type="submit" disabled={loading}>
               {loading ? 'Saving…' : 'Add'}

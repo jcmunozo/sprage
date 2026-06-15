@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../api';
 import { cardEntrance, actionSwap, softFade } from '../lib/motion';
 
 const QUALITY_BUTTONS = [
-  { label: 'Again', sublabel: 'Forgot it',  quality: 1, cls: 'btn-again' },
-  { label: 'Hard',  sublabel: 'Struggled',  quality: 3, cls: 'btn-hard'  },
-  { label: 'Good',  sublabel: 'Got it',     quality: 4, cls: 'btn-good'  },
-  { label: 'Easy',  sublabel: 'Too simple', quality: 5, cls: 'btn-easy'  },
+  { label: 'Again', sublabel: 'Forgot it',  quality: 1, cls: 'btn-again', key: '1' },
+  { label: 'Hard',  sublabel: 'Struggled',  quality: 3, cls: 'btn-hard',  key: '2' },
+  { label: 'Good',  sublabel: 'Got it',     quality: 4, cls: 'btn-good',  key: '3' },
+  { label: 'Easy',  sublabel: 'Too simple', quality: 5, cls: 'btn-easy',  key: '4' },
 ];
 
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
@@ -42,6 +42,7 @@ const Card = ({ card, onNext, onUpdate }) => {
   }
 
   const handleReview = async (quality) => {
+    if (submitting) return;
     setSubmitting(true);
     try {
       if (card._id) await api.progress.recordReview(card._id, quality);
@@ -76,6 +77,25 @@ const Card = ({ card, onNext, onUpdate }) => {
 
   const actionsKey = isEditing ? 'edit' : isFlipped ? 'quality' : 'hint';
 
+  // Keyboard shortcuts: Space/Enter flips, 1–4 rates the card once flipped
+  useEffect(() => {
+    const onKey = (e) => {
+      if (isEditing) return;
+      const tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        setIsFlipped((f) => !f);
+      } else if (isFlipped) {
+        const btn = QUALITY_BUTTONS.find((b) => b.key === e.key);
+        if (btn) handleReview(btn.quality);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditing, isFlipped, submitting, card._id]);
+
   return (
     <motion.div {...cardEntrance}>
       {/* ── Card + edit button wrapper ── */}
@@ -83,7 +103,6 @@ const Card = ({ card, onNext, onUpdate }) => {
         <div
           className={`card ${isFlipped ? 'is-flipped' : ''}`}
           onClick={() => !isEditing && setIsFlipped(f => !f)}
-          onKeyDown={(e) => !isEditing && (e.key === 'Enter' || e.key === ' ') && setIsFlipped(f => !f)}
           tabIndex={0}
           role="button"
           aria-label={isFlipped ? 'Card answer visible, press to flip back' : 'Press to reveal answer'}
@@ -190,13 +209,14 @@ const Card = ({ card, onNext, onUpdate }) => {
             </motion.form>
           ) : actionsKey === 'quality' ? (
             <motion.div key="quality" className="quality-buttons" {...actionSwap}>
-              {QUALITY_BUTTONS.map(({ label, sublabel, quality, cls }) => (
+              {QUALITY_BUTTONS.map(({ label, sublabel, quality, cls, key }) => (
                 <button
                   key={quality}
                   className={`btn-quality ${cls}`}
                   onClick={() => handleReview(quality)}
                   disabled={submitting}
                 >
+                  <kbd className="quality-key" aria-hidden="true">{key}</kbd>
                   <span className="quality-label">{label}</span>
                   <span className="quality-sublabel">{sublabel}</span>
                 </button>
@@ -204,7 +224,7 @@ const Card = ({ card, onNext, onUpdate }) => {
             </motion.div>
           ) : (
             <motion.span key="hint" className="flip-prompt" {...softFade}>
-              Tap to reveal
+              Tap<span className="hint-desktop"> or press <kbd className="hint-key">Space</kbd></span> to reveal
             </motion.span>
           )}
         </AnimatePresence>

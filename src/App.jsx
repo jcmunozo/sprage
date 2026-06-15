@@ -6,7 +6,7 @@ import { pageTransition, screenIn } from './lib/motion';
 import AuthForm from './components/AuthForm';
 import LanguageSelection from './components/LanguageSelection';
 import CategorySelection from './components/CategorySelection';
-import Card from './components/Card';
+import StudySession from './components/StudySession';
 import AddCardForm from './components/AddCardForm';
 import AddLanguageForm from './components/AddLanguageForm';
 import AddDeckForm from './components/AddDeckForm';
@@ -21,7 +21,6 @@ function App() {
   const [studyingDue, setStudyingDue] = useState(false);
   const [dueCards, setDueCards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAddCardForm, setShowAddCardForm] = useState(false);
   const [addCardDefaultType, setAddCardDefaultType] = useState(null);
   const [showAddLanguageForm, setShowAddLanguageForm] = useState(false);
@@ -71,24 +70,20 @@ function App() {
       setCards(prev => {
         const sameSet = prev.length === filtered.length && filtered.every(c => prev.some(p => p._id === c._id));
         if (sameSet) return prev.map(c => filtered.find(f => f._id === c._id) || c);
-        setCurrentCardIndex(0);
-        return [...filtered].sort(() => Math.random() - 0.5);
+        return filtered;
       });
     }
   }, [selectedCategory, selectedLanguage, allCards]);
 
   useEffect(() => {
     if (selectedDeck) {
-      const filtered = allCards.filter(c => String(c.deckId) === String(selectedDeck._id));
-      setCards([...filtered].sort(() => Math.random() - 0.5));
-      setCurrentCardIndex(0);
+      setCards(allCards.filter(c => String(c.deckId) === String(selectedDeck._id)));
     }
   }, [selectedDeck, allCards]);
 
   useEffect(() => {
     if (studyingDue) {
-      setCards([...dueCards].sort(() => Math.random() - 0.5));
-      setCurrentCardIndex(0);
+      setCards(dueCards);
     }
   }, [studyingDue, dueCards]);
 
@@ -209,10 +204,6 @@ function App() {
     }
   };
 
-  const handleNextCard = () => {
-    setCurrentCardIndex((prev) => (prev + 1) % cards.length);
-  };
-
   const handleAddCard = async (newCard) => {
     try {
       const created = await api.cards.create(newCard);
@@ -230,7 +221,20 @@ function App() {
   const cardsCountByLanguageAndType = (langId, type) =>
     allCards.filter((c) => c.type === type && String(c.languageId) === String(langId)).length;
 
+  // Reviews recorded during a session change what's due — refresh on the way home
+  const refreshDue = () => {
+    api.progress.getDue()
+      .then((due) => {
+        setDueCards([
+          ...due.due.map(p => p.cardId).filter(Boolean),
+          ...due.new,
+        ]);
+      })
+      .catch(() => {});
+  };
+
   const goHome = () => {
+    if (studyingDue || selectedDeck || selectedCategory) refreshDue();
     setSelectedLanguage(null);
     setSelectedCategory(null);
     setSelectedDeck(null);
@@ -243,8 +247,16 @@ function App() {
   if (!user) {
     return (
       <motion.div className="auth-screen" {...screenIn}>
+        <div className="auth-logo" aria-hidden="true">语</div>
         <h1>Sprage</h1>
         <p>Master languages through intelligent repetition</p>
+        <div className="auth-features">
+          <span>Spaced repetition</span>
+          <span className="auth-features-dot" aria-hidden="true" />
+          <span>Any language</span>
+          <span className="auth-features-dot" aria-hidden="true" />
+          <span>Your own decks</span>
+        </div>
         <AuthForm onAuth={handleAuth} />
       </motion.div>
     );
@@ -355,61 +367,32 @@ function App() {
                 onCancel={() => setShowAddDeckForm(false)}
               />
             ) : studyingDue ? (
-              <div className="card-container">
-                {cards.length > 0 ? (
-                  <>
-                    <p className="card-counter">
-                      Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
-                    </p>
-                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
-                  </>
-                ) : (
-                  <div className="empty-state">
-                    <p>No cards due for review right now.</p>
-                    <button onClick={goHome}>Back to Home</button>
-                  </div>
-                )}
-              </div>
+              <StudySession
+                cards={cards}
+                onUpdate={handleUpdateCard}
+                onHome={goHome}
+                emptyMessage="No cards due for review right now."
+                emptyActionLabel="Back to Home"
+                onEmptyAction={goHome}
+              />
             ) : selectedDeck ? (
-              <div className="card-container">
-                {cards.length > 0 ? (
-                  <>
-                    <p className="card-counter">
-                      Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
-                    </p>
-                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
-                  </>
-                ) : (
-                  <div className="empty-state">
-                    <p>No cards in this deck yet.</p>
-                    <button
-                      onClick={() => { setSelectedDeck(null); setShowAddCardForm(true); }}
-                    >
-                      Add your first card
-                    </button>
-                  </div>
-                )}
-              </div>
+              <StudySession
+                cards={cards}
+                onUpdate={handleUpdateCard}
+                onHome={goHome}
+                emptyMessage="No cards in this deck yet."
+                emptyActionLabel="Add your first card"
+                onEmptyAction={() => { setSelectedDeck(null); setShowAddCardForm(true); }}
+              />
             ) : selectedCategory ? (
-              <div className="card-container">
-                {cards.length > 0 ? (
-                  <>
-                    <p className="card-counter">
-                      Card <span>{currentCardIndex + 1}</span> of <span>{cards.length}</span>
-                    </p>
-                    <Card card={cards[currentCardIndex]} onNext={handleNextCard} onUpdate={handleUpdateCard} />
-                  </>
-                ) : (
-                  <div className="empty-state">
-                    <p>No cards in this category yet.</p>
-                    <button
-                      onClick={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
-                    >
-                      Add your first card
-                    </button>
-                  </div>
-                )}
-              </div>
+              <StudySession
+                cards={cards}
+                onUpdate={handleUpdateCard}
+                onHome={goHome}
+                emptyMessage="No cards in this category yet."
+                emptyActionLabel="Add your first card"
+                onEmptyAction={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
+              />
             ) : selectedLanguage ? (
               <CategorySelection
                 onSelectCategory={handleSelectCategory}
