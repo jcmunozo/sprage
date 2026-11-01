@@ -58,3 +58,37 @@ export const softFade = {
   exit:    { opacity: 0 },
   transition: { duration: duration.fast, delay: 0.08 },
 };
+
+// ── Card stack (study session) ──────────────────────────────────
+// The top card is thrown off to the side when rated and flies back from
+// there on undo. `custom` is { dir: -1 | 1, undo: boolean }.
+
+export const STACK_PEEK = 10;      // px each card behind peeks out below
+export const STACK_SHRINK = 0.05;  // scale step per card behind
+const THROW_X = 560;
+const THROW_ROTATE = 16;
+
+const stackSpring = { type: 'spring', stiffness: 260, damping: 30 };
+
+export const stackCard = {
+  // New top card rises from the slot behind; an undone card returns from where it left
+  enter: ({ undo, dir }) =>
+    undo
+      ? { x: dir * THROW_X, y: -30, rotate: dir * THROW_ROTATE, opacity: 0, scale: 1 }
+      : { x: 0, y: STACK_PEEK, rotate: 0, opacity: 1, scale: 1 - STACK_SHRINK },
+  center: {
+    x: 0, y: 0, rotate: 0, opacity: 1, scale: 1,
+    transition: { ...stackSpring, opacity: { duration: duration.fast } },
+  },
+  // Rated cards fly off; on undo the current card sinks back into the stack
+  exit: ({ undo, dir }) =>
+    undo
+      ? { x: 0, y: STACK_PEEK, scale: 1 - STACK_SHRINK, opacity: 0,
+          transition: { duration: duration.base, ease } }
+      : { x: dir * THROW_X, y: -30, rotate: dir * THROW_ROTATE, opacity: 0,
+          transition: { ...stackSpring, opacity: { duration: 0.22, delay: 0.1 } } },
+};
+
+// Swipe thresholds for dragging the top card
+export const SWIPE_DISTANCE = 120; // px
+export const SWIPE_VELOCITY = 500; // px/s

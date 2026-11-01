@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import RichTextarea from './RichTextarea';
+import { stripRich } from '../lib/richText';
 
 const TYPES       = ['idiom', 'grammar', 'vocabulary'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
@@ -158,7 +160,7 @@ const AddCardForm = ({
               <ul>
                 {duplicateMatches.map((c) => (
                   <li key={c._id}>
-                    <strong>{c.front}</strong> — {c.back}
+                    <strong>{c.front}</strong> — {stripRich(c.back)}
                   </li>
                 ))}
               </ul>
@@ -168,10 +170,9 @@ const AddCardForm = ({
 
         <div className="form-group">
           <label>Back — meaning or translation</label>
-          <input
-            type="text"
+          <RichTextarea
             value={back}
-            onChange={(e) => setBack(e.target.value)}
+            onChange={setBack}
             placeholder="e.g. A fortunate accident"
             required
           />
@@ -179,10 +180,9 @@ const AddCardForm = ({
 
         <div className="form-group">
           <label>Example sentence <span className="field-hint">(optional)</span></label>
-          <input
-            type="text"
+          <RichTextarea
             value={example}
-            onChange={(e) => setExample(e.target.value)}
+            onChange={setExample}
             placeholder="e.g. It was pure serendipity that we met."
           />
         </div>

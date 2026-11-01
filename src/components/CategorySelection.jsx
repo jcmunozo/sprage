@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { listContainer, listItem } from '../lib/motion';
 import LanguageLinks from './LanguageLinks';
+import { stripRich } from '../lib/richText';
+import { CATEGORIES } from '../lib/categories';
 
-const CATEGORIES = [
-  { id: 'vocabulary', label: 'Vocabulary', icon: '词', description: 'Words & definitions', color: '#4FD18E' },
-  { id: 'idiom',      label: 'Idioms',     icon: '语', description: 'Phrases & expressions', color: '#E89968' },
-  { id: 'grammar',    label: 'Grammar',    icon: '文', description: 'Rules & structures', color: '#6EB6E8' },
-];
 
 const CategorySelection = ({
   onSelectCategory,
@@ -19,8 +15,10 @@ const CategorySelection = ({
   onAddLink,
   onUpdateLink,
   onRemoveLink,
+  onOpenCard,
+  query = '',
+  onQueryChange,
 }) => {
-  const [query, setQuery] = useState('');
   const q = query.trim().toLowerCase();
   const results = q
     ? cards.filter(
@@ -37,20 +35,26 @@ const CategorySelection = ({
           type="search"
           className="card-search-input"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => onQueryChange(e.target.value)}
           placeholder={`Search cards in ${selectedLanguage?.name || 'this language'}…`}
         />
         {q && (
           <div className="card-search-results">
             {results.length > 0 ? (
               results.map((c) => (
-                <div key={c._id} className="search-result">
+                <button
+                  key={c._id}
+                  type="button"
+                  className="search-result"
+                  onClick={() => onOpenCard(c._id)}
+                  aria-label={`Open card ${c.front}`}
+                >
                   <span className="search-result-text">
                     <strong>{c.front}</strong>
-                    <span className="search-result-back">{c.back}</span>
+                    <span className="search-result-back">{stripRich(c.back)}</span>
                   </span>
                   {c.type && <span className="search-result-type">{c.type}</span>}
-                </div>
+                </button>
               ))
             ) : (
               <p className="search-empty">No cards match “{query.trim()}”.</p>

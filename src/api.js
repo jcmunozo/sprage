@@ -53,8 +53,8 @@ export const api = {
   },
   progress: {
     getDue: () => request('/progress/due'),
-    recordReview: (cardId, quality) =>
-      request('/progress/review', { method: 'POST', body: JSON.stringify({ cardId, quality }) }),
+    recordReview: (cardId, quality, options = {}) =>
+      request('/progress/review', { method: 'POST', body: JSON.stringify({ cardId, quality }), ...options }),
   },
   languages: {
     getAll: () => request('/languages'),

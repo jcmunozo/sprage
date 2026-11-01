@@ -3,10 +3,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 import { api } from './api';
 import { pageTransition, screenIn } from './lib/motion';
+import { reviewQueue } from './lib/reviewQueue';
 import AuthForm from './components/AuthForm';
 import LanguageSelection from './components/LanguageSelection';
 import CategorySelection from './components/CategorySelection';
 import StudySession from './components/StudySession';
+import CardDetail from './components/CardDetail';
+import Breadcrumb from './components/Breadcrumb';
+import { CrumbIcons } from './lib/crumbIcons';
+import { categoryById } from './lib/categories';
+import { languageFlag } from './lib/flags';
 import AddCardForm from './components/AddCardForm';
 import AddLanguageForm from './components/AddLanguageForm';
 import AddDeckForm from './components/AddDeckForm';
@@ -19,6 +25,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDeck, setSelectedDeck] = useState(null);
   const [studyingDue, setStudyingDue] = useState(false);
+  const [viewingCardId, setViewingCardId] = useState(null);
+  const [cardSearchQuery, setCardSearchQuery] = useState('');
   const [dueCards, setDueCards] = useState([]);
   const [cards, setCards] = useState([]);
   const [showAddCardForm, setShowAddCardForm] = useState(false);
@@ -105,6 +113,8 @@ function App() {
     setSelectedCategory(null);
     setSelectedDeck(null);
     setStudyingDue(false);
+    setViewingCardId(null);
+    setCardSearchQuery('');
     setShowAddCardForm(false);
     setShowAddLanguageForm(false);
     setShowAddDeckForm(false);
@@ -140,6 +150,8 @@ function App() {
   const handleSelectLanguage = (language) => {
     setSelectedLanguage(language);
     setSelectedCategory(null);
+    setViewingCardId(null);
+    setCardSearchQuery('');
     setSelectedDeck(null);
     setStudyingDue(false);
     setShowAddCardForm(false);
@@ -223,7 +235,9 @@ function App() {
 
   // Reviews recorded during a session change what's due — refresh on the way home
   const refreshDue = () => {
-    api.progress.getDue()
+    // Send the last (still undoable) review first so it's reflected in the queue
+    reviewQueue.flush()
+      .then(() => api.progress.getDue())
       .then((due) => {
         setDueCards([
           ...due.due.map(p => p.cardId).filter(Boolean),
@@ -239,6 +253,8 @@ function App() {
     setSelectedCategory(null);
     setSelectedDeck(null);
     setStudyingDue(false);
+    setViewingCardId(null);
+    setCardSearchQuery('');
     setShowAddCardForm(false);
     setShowAddLanguageForm(false);
     setShowAddDeckForm(false);
@@ -262,77 +278,86 @@ function App() {
     );
   }
 
+  // Leaving the opened card goes back to the language page with a clean search
+  const closeCard = () => {
+    setViewingCardId(null);
+    setCardSearchQuery('');
+  };
+
+  // Looked up from allCards so edits show up immediately
+  const viewingCard = viewingCardId ? allCards.find((c) => c._id === viewingCardId) : null;
+
   const viewKey = showAddCardForm ? 'add-card-form'
     : showAddLanguageForm ? 'add-language-form'
     : showAddDeckForm ? 'add-deck-form'
     : studyingDue ? 'study-due'
     : selectedDeck ? `deck-${selectedDeck._id}`
     : selectedCategory ? `cards-${selectedCategory}`
+    : viewingCard ? `card-${viewingCard._id}`
     : selectedLanguage ? `cats-${selectedLanguage._id}`
     : 'languages';
 
   const showBreadcrumb = selectedLanguage || selectedCategory || selectedDeck || studyingDue
     || showAddCardForm || showAddLanguageForm || showAddDeckForm;
 
+  // Breadcrumb trail — the last item is the current view
+  const crumbs = [{ key: 'home', label: 'Home', icon: CrumbIcons.home, onClick: goHome }];
+  if (showAddLanguageForm) crumbs.push({ key: 'new-language', label: 'New Language', icon: CrumbIcons.add });
+  if (showAddDeckForm) crumbs.push({ key: 'new-deck', label: 'New Deck', icon: CrumbIcons.deck });
+  if (selectedDeck) crumbs.push({ key: `deck-${selectedDeck._id}`, label: selectedDeck.name, icon: CrumbIcons.deck });
+  if (studyingDue) crumbs.push({ key: 'due', label: 'Study Due', icon: CrumbIcons.due });
+  if (selectedLanguage) {
+    crumbs.push({
+      key: `lang-${selectedLanguage._id}`,
+      label: selectedLanguage.name,
+      // Flag when we can tell the country, otherwise the language code
+      icon: languageFlag(selectedLanguage) ? (
+        <img className="crumbs-flag" src={languageFlag(selectedLanguage)} alt="" width="18" height="13" />
+      ) : (
+        <span className="crumbs-code">
+          {(selectedLanguage.code || selectedLanguage.name.slice(0, 2)).toUpperCase()}
+        </span>
+      ),
+      onClick: () => { setSelectedCategory(null); setShowAddCardForm(false); closeCard(); },
+    });
+  }
+  if (selectedCategory) {
+    const cat = categoryById(selectedCategory);
+    crumbs.push({
+      key: `cat-${selectedCategory}`,
+      label: cat?.label || selectedCategory,
+      icon: cat && <span className="crumbs-glyph">{cat.icon}</span>,
+    });
+  }
+  if (viewingCard && !selectedCategory) {
+    crumbs.push({ key: `card-${viewingCard._id}`, label: viewingCard.front, icon: CrumbIcons.card });
+  }
+  if (showAddCardForm) crumbs.push({ key: 'new-card', label: 'New Card', icon: CrumbIcons.add });
+
   return (
     <>
       <header className="top-bar">
         <h1>Sprage</h1>
-        <div className="top-bar-user">
-          <span>Welcome, <strong>{user.username}</strong></span>
-          <button className="btn-ghost" onClick={handleLogout}>Logout</button>
+        <div className="user-pill">
+          <span className="user-pill-avatar" aria-hidden="true">
+            {user.username?.charAt(0).toUpperCase()}
+          </span>
+          <span className="user-pill-text">
+            <span className="user-pill-greet">Welcome,</span>
+            <strong className="user-pill-name">{user.username}</strong>
+          </span>
+          <span className="user-pill-sep" aria-hidden="true" />
+          <button type="button" className="user-pill-logout" onClick={handleLogout} title="Log out">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M5.5 2.5H3.5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M8.5 4.5 11 7l-2.5 2.5M11 7H5.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="user-pill-logout-label">Logout</span>
+          </button>
         </div>
       </header>
 
-      {showBreadcrumb && (
-        <nav className="card-back-nav">
-          <button onClick={goHome}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Home
-          </button>
-          {showAddLanguageForm && (
-            <>
-              <span className="crumb-sep">›</span>
-              <span className="crumb-active">New Language</span>
-            </>
-          )}
-          {showAddDeckForm && (
-            <>
-              <span className="crumb-sep">›</span>
-              <span className="crumb-active">New Deck</span>
-            </>
-          )}
-          {selectedDeck && (
-            <>
-              <span className="crumb-sep">›</span>
-              <span className="crumb-active">{selectedDeck.name}</span>
-            </>
-          )}
-          {studyingDue && (
-            <>
-              <span className="crumb-sep">›</span>
-              <span className="crumb-active">Study Due</span>
-            </>
-          )}
-          {selectedLanguage && (
-            <>
-              <span className="crumb-sep">›</span>
-              {selectedCategory
-                ? <span className="crumb-link" onClick={() => setSelectedCategory(null)}>{selectedLanguage.name}</span>
-                : <span className="crumb-active">{selectedLanguage.name}</span>
-              }
-            </>
-          )}
-          {selectedCategory && (
-            <>
-              <span className="crumb-sep">›</span>
-              <span className="crumb-active" style={{ textTransform: 'capitalize' }}>{selectedCategory}</span>
-            </>
-          )}
-        </nav>
-      )}
+      {showBreadcrumb && <Breadcrumb items={crumbs} />}
 
       <main className="app-main">
         {error && (
@@ -393,6 +418,12 @@ function App() {
                 emptyActionLabel="Add your first card"
                 onEmptyAction={() => { setAddCardDefaultType(selectedCategory); setSelectedCategory(null); setShowAddCardForm(true); }}
               />
+            ) : viewingCard ? (
+              <CardDetail
+                card={viewingCard}
+                onUpdate={handleUpdateCard}
+                onBack={closeCard}
+              />
             ) : selectedLanguage ? (
               <CategorySelection
                 onSelectCategory={handleSelectCategory}
@@ -410,6 +441,9 @@ function App() {
                 onAddLink={handleAddLink}
                 onUpdateLink={handleUpdateLink}
                 onRemoveLink={handleRemoveLink}
+                onOpenCard={setViewingCardId}
+                query={cardSearchQuery}
+                onQueryChange={setCardSearchQuery}
               />
             ) : (
               <LanguageSelection

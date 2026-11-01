@@ -281,24 +281,6 @@ button:disabled {
   margin-bottom: 0;
 }
 
-.top-bar-user {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.top-bar-user span {
-  font-size: 11px;
-  color: var(--fg-3);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.top-bar-user span strong {
-  color: var(--amber-300);
-  font-weight: 700;
-}
-
 .btn-ghost {
   background: transparent;
   border: 1px solid var(--border-medium);
@@ -320,67 +302,201 @@ button:disabled {
   box-shadow: none;
 }
 
-/* ── Breadcrumb / back nav ──────────────────────────────────── */
-.card-back-nav {
-  display: flex;
+/* ── User pill (header) — same glass treatment as the breadcrumb ── */
+.user-pill {
+  display: inline-flex;
   align-items: center;
-  background: rgba(35, 48, 41, 0.55);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 0;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 10px;
+  padding: 4px 4px 4px 4px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, rgba(54, 73, 62, 0.55), rgba(35, 48, 41, 0.55));
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
 }
 
-.card-back-nav button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 20px;
-  border-right: 1px solid var(--border-subtle);
-  background: transparent;
-  color: var(--green-400);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.user-pill-avatar {
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
-  border-radius: 0;
-  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green-50);
+  background: linear-gradient(150deg, var(--green-500), var(--green-600));
+  box-shadow: 0 0 0 1px var(--border-green), 0 0 12px rgba(79, 209, 142, 0.25);
 }
 
-.card-back-nav button:hover {
-  background: rgba(79, 209, 142, 0.08);
+.user-pill-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.user-pill-greet { color: var(--fg-3); }
+
+.user-pill-name {
+  color: var(--fg-1);
+  font-weight: 600;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-pill-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border-medium);
+}
+
+.user-pill-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--fg-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  will-change: auto;
+}
+
+.user-pill-logout:hover {
+  color: var(--diff-again);
+  background: rgba(224, 106, 106, 0.10);
   transform: none;
   box-shadow: none;
 }
 
-.card-back-nav svg path { stroke: var(--green-400); }
-
-.card-back-nav .crumb-sep {
-  color: var(--fg-3);
-  font-size: 14px;
-  padding: 0 4px;
+/* ── Breadcrumb (glass pill) ───────────────────────────────── */
+.crumbs {
+  padding: var(--space-4) var(--space-7) 0;
+  display: flex;
 }
 
-.card-back-nav .crumb-active {
-  padding: 10px 14px;
-  font-size: 11px;
+.crumbs-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, rgba(54, 73, 62, 0.55), rgba(35, 48, 41, 0.55));
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+.crumbs-pill::-webkit-scrollbar { display: none; }
+
+.crumbs-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.crumbs-sep {
+  color: var(--fg-4);
+  margin: 0 2px;
+  flex-shrink: 0;
+}
+
+.crumbs-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--fg-3);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  will-change: auto;
+}
+
+button.crumbs-link:hover {
   color: var(--fg-1);
+  background: rgba(240, 237, 225, 0.06);
+  transform: none;
+  box-shadow: none;
 }
 
-.card-back-nav .crumb-link {
-  padding: 10px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--fg-3);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color var(--transition);
+.crumbs-link--active { color: var(--green-100); }
+
+/* Sliding highlight behind the current level */
+.crumbs-active-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, rgba(79, 209, 142, 0.22), rgba(47, 179, 108, 0.14));
+  border: 1px solid var(--border-green);
+  box-shadow: 0 0 14px rgba(79, 209, 142, 0.18);
 }
 
-.card-back-nav .crumb-link:hover { color: var(--fg-1); }
+.crumbs-link > * { position: relative; }
+.crumbs-link { isolation: isolate; }
+
+.crumbs-icon {
+  display: inline-flex;
+  align-items: center;
+  color: currentColor;
+}
+
+.crumbs-link--active .crumbs-icon { color: var(--green-400); }
+
+.crumbs-label {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crumbs-code {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  opacity: 0.85;
+}
+
+.crumbs-glyph { font-size: 0.85rem; line-height: 1; }
+
+.crumbs-flag {
+  width: 18px;
+  height: 13px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
 
 /* ── Auth screen ─────────────────────────────────────────────── */
 .auth-screen {
@@ -1009,14 +1125,14 @@ button:disabled {
 
 /* ── Card container ─────────────────────────────────────────── */
 .card-container {
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 36px var(--space-7);
 }
 
 /* ── Session progress ───────────────────────────────────────── */
 .session-progress {
-  max-width: 560px;
+  max-width: 660px;
   margin: 0 auto var(--space-6);
 }
 
@@ -1086,11 +1202,110 @@ button:disabled {
 
 .session-complete-actions .btn-ghost { padding: 0.7rem 1.3rem; }
 
+/* ── Card stack (swipe + undo) ──────────────────────────────── */
+.card-stack {
+  display: grid;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  /* room for the cards peeking out behind */
+  padding-bottom: 20px;
+}
+
+.card-stack > * { grid-area: 1 / 1; }
+
+.card-stack-top { position: relative; }
+
+.card-stack-ghost {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-subtle);
+  background: linear-gradient(150deg, var(--bg-card) 0%, var(--bg-surface) 100%);
+  box-shadow: var(--shadow-md);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+.card-swipe { position: relative; touch-action: pan-y; }
+.card-swipe--active { cursor: grab; }
+.card-swipe--active:active { cursor: grabbing; }
+.card-swipe--active .card { cursor: inherit; }
+
+.swipe-stamp {
+  position: absolute;
+  top: 18px;
+  z-index: 4;
+  padding: 4px 12px;
+  border: 2px solid currentColor;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(26, 38, 32, 0.7);
+  pointer-events: none;
+}
+
+.swipe-stamp--good  { left: 18px;  color: var(--diff-good);  transform: rotate(-8deg); }
+.swipe-stamp--again { right: 18px; color: var(--diff-again); transform: rotate(8deg); }
+
+.session-undo-slot {
+  min-height: 36px;
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: center;
+}
+
+.session-undo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--fg-3);
+  padding: 6px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.session-undo:hover {
+  color: var(--green-400);
+  border-color: var(--border-green);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.session-complete .session-undo { margin-top: var(--space-4); }
+
+/* ── Confetti ───────────────────────────────────────────────── */
+.session-complete-icon { position: relative; }
+
+.confetti-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.confetti-particle {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
 /* ── Card wrapper (edit button) ─────────────────────────────── */
 .card-wrapper {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 660px;
   margin: 0 auto;
 }
 
@@ -1139,7 +1354,7 @@ button:disabled {
 /* ── Card edit form ─────────────────────────────────────────── */
 .card-edit-form {
   width: 100%;
-  max-width: 560px;
+  max-width: 660px;
   margin: 0 auto;
   background: var(--bg-surface);
   border: 1px solid var(--border-medium);
@@ -1302,9 +1517,19 @@ button:disabled {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
+  padding: 3rem 2.75rem;
   border-radius: var(--radius-xl);
+}
+
+/* Content block inside a face; measured to size the card */
+.card-face-content {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-3);
+  margin: auto 0;
 }
 
 .card-face-front {
@@ -1344,6 +1569,18 @@ button:disabled {
 
 .card-face-back .card-text { color: var(--green-200); }
 
+/* The answer sits next to an example, so it steps down a size to keep the pair balanced */
+.card-face-back .card-text {
+  font-size: clamp(1.35rem, 3.8vw, 2rem);
+  line-height: 1.25;
+}
+
+/* Long phrases shrink so they still fit the card */
+.card-text--long {
+  font-size: clamp(1.15rem, 3vw, 1.6rem) !important;
+  line-height: 1.3;
+}
+
 .card-hint {
   font-size: 0.72rem;
   color: var(--fg-3);
@@ -1379,10 +1616,14 @@ button:disabled {
 .card-example {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1rem;
-  color: var(--fg-2);
+  font-size: clamp(1.02rem, 2.4vw, 1.2rem);
+  color: var(--fg-1);
+  opacity: 0.82;
   line-height: 1.5;
-  max-width: 90%;
+  max-width: 88%;
+  margin-top: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
@@ -1912,7 +2153,12 @@ button:disabled {
 /* ── Mobile layout ──────────────────────────────────────────── */
 @media (max-width: 480px) {
   .top-bar { padding: 12px 16px; }
-  .card-back-nav button { padding: 8px 14px; }
+  .crumbs { padding: var(--space-3) var(--space-4) 0; }
+  .crumbs-label { max-width: 140px; }
+  .user-pill-text,
+  .user-pill-sep,
+  .user-pill-logout-label { display: none; }
+  .user-pill-logout { padding: 7px; }
   .category-selection { padding: var(--space-7) var(--space-4); }
   .card-container { padding: var(--space-6) var(--space-4); }
   .quality-buttons { gap: 6px; }
@@ -1977,6 +2223,20 @@ button:disabled {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   text-align: left;
+  width: 100%;
+  color: inherit;
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  text-transform: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.search-result:hover {
+  border-color: var(--border-green);
+  background: var(--bg-raised);
+  transform: none;
+  box-shadow: none;
 }
 
 .search-result-text {
@@ -2057,4 +2317,272 @@ button:disabled {
 .dup-warning li strong {
   color: var(--fg-1);
   font-weight: 600;
+}
+
+/* ── Card detail (opened from search) ───────────────────────── */
+.card-detail-head {
+  max-width: 660px;
+  margin: 0 auto var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card-edit-btn--visible { opacity: 1; }
+
+.card-view-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.card-view-edit { padding: 0.55rem 1.2rem; }
+
+/* ── Rich text (highlight + bullets) on card faces ──────────── */
+.rich-para { margin: 0; }
+.rich-para + .rich-para,
+.rich-para + .rich-list,
+.rich-list + .rich-para { margin-top: 0.4em; }
+
+.rich-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3em;
+  text-align: left;
+}
+
+.rich-list li {
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.rich-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.15em;
+  top: 0.62em;
+  width: 0.34em;
+  height: 0.34em;
+  border-radius: 50%;
+  background: var(--green-400);
+}
+
+.card-example .rich-list li::before { background: var(--fg-3); }
+
+
+
+.card-face-back,
+.card-face-front { overflow-y: auto; }
+
+/* ── Rich textarea (forms) ──────────────────────────────────── */
+.rich-textarea {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-raised);
+  transition: border-color var(--transition), background var(--transition),
+              box-shadow var(--transition);
+}
+
+.rich-textarea:focus-within {
+  border-color: rgba(79, 209, 142, 0.55);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px rgba(79, 209, 142, 0.12);
+}
+
+.rich-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.rich-tool {
+  width: 26px;
+  height: 24px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--fg-3);
+  border-radius: 6px;
+  box-shadow: none;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.rich-tool:hover {
+  color: var(--green-400);
+  background: rgba(79, 209, 142, 0.10);
+  transform: none;
+  box-shadow: none;
+}
+
+
+.rich-hint {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--fg-4);
+}
+
+.rich-textarea textarea {
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.55rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--fg-1);
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: vertical;
+}
+
+.form-group .rich-textarea textarea { padding: 0.7rem 1rem; font-size: 0.9rem; }
+
+.rich-textarea textarea::placeholder { color: var(--fg-4); }
+
+/* ── Edit card modal ────────────────────────────────────────── */
+.edit-modal {
+  width: 100%;
+  max-width: 640px;
+  max-height: calc(100dvh - 2 * var(--space-5));
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), var(--inset-top);
+  position: relative;
+  overflow: hidden;
+}
+
+.edit-modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--green-500) 30%, var(--green-300) 50%, var(--green-500) 70%, transparent 100%);
+}
+
+.edit-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6) var(--space-3);
+}
+
+.edit-modal-head h3 { margin: 0; }
+
+.edit-modal-close {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--fg-3);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.edit-modal-close:hover {
+  color: var(--fg-1);
+  background: var(--bg-raised);
+  transform: none;
+  box-shadow: none;
+}
+
+.edit-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.edit-modal-row {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.edit-modal-row .card-edit-field:last-child { flex: 0 0 170px; }
+
+/* Same height for the plain input and select as the rich boxes' text */
+.edit-modal .card-edit-field input,
+.edit-modal .card-edit-field select {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+.edit-modal .card-edit-field select { padding-right: 2rem; }
+
+.edit-modal .rich-textarea textarea {
+  padding: 0.75rem 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Grows with content, scrolls past a comfortable height; still hand-resizable */
+.rich-textarea--grow textarea {
+  min-height: 5rem;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.edit-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+}
+
+.edit-modal-actions .card-edit-cancel,
+.edit-modal-actions .card-edit-save { padding: 0.6rem 1.3rem; }
+
+.edit-modal-shortcut {
+  margin-right: auto;
+  font-size: 0.7rem;
+  color: var(--fg-4);
+}
+
+.edit-modal-shortcut kbd {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 1px 5px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--fg-3);
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop:has(.edit-modal) { padding: var(--space-3); align-items: flex-end; }
+  .edit-modal { max-height: calc(100dvh - 2 * var(--space-3)); }
+  .edit-modal-head,
+  .edit-modal-body,
+  .edit-modal-actions { padding-left: var(--space-4); padding-right: var(--space-4); }
+  .edit-modal-row { flex-direction: column; gap: var(--space-5); }
+  .edit-modal-row .card-edit-field:last-child { flex: 1; }
+  .edit-modal-shortcut { display: none; }
+}
+
+@media (max-width: 480px) {
+  .card-face { padding: 2.5rem 1.5rem; }
 }
